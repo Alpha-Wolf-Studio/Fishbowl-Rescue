@@ -3,19 +3,24 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayerStats playerStats;
+    [SerializeField] private PlayerWeaponHitterStats playerHitterStats;
     [SerializeField] private WeaponPicker weaponPicker;
     [SerializeField] private WeaponHitter weaponHitter;
 
     private Rigidbody rigidbody;
 
-    private void Awake ()
+    private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
+        weaponHitter.playerHitterStats = playerHitterStats;
+        weaponPicker.playerHitterStats = playerHitterStats;
     }
 
-    void Start () { }
+    void Start()
+    {
+    }
 
-    private void Update ()
+    private void Update()
     {
         float deltaTime = Time.fixedDeltaTime;
 
@@ -24,17 +29,32 @@ public class PlayerController : MonoBehaviour
         WeaponsAction(deltaTime);
     }
 
-    private void OnDestroy () { }
+    private bool hasHittedSomething(out RaycastHit hit)
+    {
+        bool hasHitted = Physics.Raycast(transform.position, transform.forward, out hit, playerHitterStats.range);
+        if (hasHitted)
+        {
+            Debug.Log(hit.collider.name);
+        }
 
-    private void Rotate (float deltaTime)
+        return hasHitted;
+    }
+
+    private void OnDestroy()
+    {
+    }
+
+    private void Rotate(float deltaTime)
     {
         if (!CanMove())
             return;
 
-        if (Input.GetMouseButtonDown(0)) { }
+        if (Input.GetMouseButtonDown(0))
+        {
+        }
     }
 
-    private void Movement (float deltaTime)
+    private void Movement(float deltaTime)
     {
         if (!CanMove())
             return;
@@ -53,21 +73,26 @@ public class PlayerController : MonoBehaviour
             MoveRight(deltaTime);
     }
 
-    private void Move (float deltaTime, Vector3 velocity) => rigidbody.AddForce(velocity * deltaTime, playerStats.forceMode);
-    private void MoveUp (float deltaTime) => Move(deltaTime, transform.up * playerStats.speedUp);
-    private void MoveDown (float deltaTime) => Move(deltaTime, -transform.up * playerStats.speedDown);
-    private void MoveForward (float deltaTime) => Move(deltaTime, transform.forward * playerStats.speedForward);
-    private void MoveBack (float deltaTime) => Move(deltaTime, -transform.forward * playerStats.speedDirections);
-    private void MoveLeft (float deltaTime) => Move(deltaTime, -transform.right * playerStats.speedDirections);
-    private void MoveRight (float deltaTime) => Move(deltaTime, transform.right * playerStats.speedDirections);
+    private void Move(float deltaTime, Vector3 velocity) =>
+        rigidbody.AddForce(velocity * deltaTime, playerStats.forceMode);
 
-    private void WeaponsAction (float deltaTime)
+    private void MoveUp(float deltaTime) => Move(deltaTime, transform.up * playerStats.speedUp);
+    private void MoveDown(float deltaTime) => Move(deltaTime, -transform.up * playerStats.speedDown);
+    private void MoveForward(float deltaTime) => Move(deltaTime, transform.forward * playerStats.speedForward);
+    private void MoveBack(float deltaTime) => Move(deltaTime, -transform.forward * playerStats.speedDirections);
+    private void MoveLeft(float deltaTime) => Move(deltaTime, -transform.right * playerStats.speedDirections);
+    private void MoveRight(float deltaTime) => Move(deltaTime, transform.right * playerStats.speedDirections);
+
+    private void WeaponsAction(float deltaTime)
     {
+        if (!hasHittedSomething(out var hit)) 
+            return;
+        
         if (Input.GetKey(KeyCode.Q))
-            weaponHitter.Shoot(transform.forward);
+            weaponHitter.Shoot(hit.collider.transform.position);
         if (Input.GetKey(KeyCode.E))
-            weaponPicker.Shoot(transform.forward);
+            weaponPicker.Shoot(hit.collider.transform.position);
     }
 
-    private bool CanMove () => true;
+    private bool CanMove() => true;
 }
