@@ -1,24 +1,28 @@
 using UnityEngine;
+using UnityEngine.Events;
 
-public class WaterTap : MonoBehaviour, IInteractable
+public class WaterTap : Interactable
 {
-    [field: SerializeField] public InteractType InteractType { get; set; }
+    public override UnityEvent<Interactable> onInteract { get; set; } = new UnityEvent<Interactable>();
+    [field: SerializeField] public override InteractType InteractType { get; set; }
 
-    private void Start()
-    {
+    private void Start () { }
 
-    }
+    private void Update () { }
 
-    private void Update()
-    {
-
-    }
-
-    public void OnInteract(InteractType interactType)
+    public override void OnInteract (InteractType interactType)
     {
         if (interactType != InteractType)
             return;
 
+        onInteract?.Invoke(this);
+    }
 
+    public override void Activate (Transform parent)
+    {
+        gameObject.SetActive(true);
+        transform.SetParent(parent);
+        transform.position = parent.position;
+        transform.up = parent.up;
     }
 }

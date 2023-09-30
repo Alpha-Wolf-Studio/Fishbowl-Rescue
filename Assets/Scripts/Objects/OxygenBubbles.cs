@@ -27,6 +27,7 @@ public class OxygenBubbles : MonoBehaviour
         if (bubble == null)
         {
             bubble = Instantiate(prefabBubble, Vector3.zero, Quaternion.identity, transform);
+            bubble.transform.localPosition = Vector3.zero;
             bubbles.Add(bubble);
         }
         
