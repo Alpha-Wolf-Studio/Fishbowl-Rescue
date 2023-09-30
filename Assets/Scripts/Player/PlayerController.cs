@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private WeaponHitter weaponHitter;
 
     private Rigidbody rigidbody;
+    private Vector3 finalPos;
 
     private void Awake()
     {
@@ -85,13 +86,19 @@ public class PlayerController : MonoBehaviour
 
     private void WeaponsAction(float deltaTime)
     {
-        if (!hasHittedSomething(out var hit)) 
-            return;
-        
+        if (hasHittedSomething(out var hit))
+        {
+            finalPos = hit.collider.transform.position;
+        }
+        else
+        {
+            finalPos = transform.forward * playerHitterStats.range;
+        }
+
         if (Input.GetKey(KeyCode.Q))
-            weaponHitter.Shoot(hit.collider.transform.position);
+            weaponHitter.Shoot(finalPos);
         if (Input.GetKey(KeyCode.E))
-            weaponPicker.Shoot(hit.collider.transform.position);
+            weaponPicker.Shoot(finalPos);
     }
 
     private bool CanMove() => true;
