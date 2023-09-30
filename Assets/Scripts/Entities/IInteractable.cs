@@ -1,7 +1,12 @@
-public interface IInteractable
+using UnityEngine;
+using UnityEngine.Events;
+
+public abstract class IInteractable : MonoBehaviour
 {
-    public InteractType InteractType { get; set; }
-    public void OnInteract (InteractType interactType);
+    public abstract UnityEvent<IInteractable> onInteract { get; set; }
+    public abstract InteractType InteractType { get; set; }
+    public abstract void OnInteract (InteractType interactType);
+    public abstract void Activate (Transform parent);
 }
 
 [System.Serializable]
