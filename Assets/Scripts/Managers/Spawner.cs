@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private List<Transform> spawnPoints = new List<Transform>();
-    [field: SerializeField] private List<Interactable> waterTaps = new List<Interactable>();
+    [SerializeField] private List<Interactable> interactables = new List<Interactable>();
     [SerializeField] private PlayerController player;
 
     [Space(10)]
@@ -13,10 +14,10 @@ public class Spawner : MonoBehaviour
 
     private void Start ()
     {
-        for (int i = 0; i < waterTaps.Count; i++)
+        for (int i = 0; i < interactables.Count; i++)
         {
-            waterTaps[i].onInteract.AddListener(OnInteractWaterTap);
-            StartCoroutine(SpawnWaterTap(waterTaps[i]));
+            interactables[i].onInteract.AddListener(OnInteractWaterTap);
+            StartCoroutine(SpawnWaterTap(interactables[i]));
         }
     }
 
