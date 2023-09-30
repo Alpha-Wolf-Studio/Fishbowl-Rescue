@@ -23,14 +23,14 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        weaponHitter.IsWeaponActive.AddListener(isShooting);
-        weaponPicker.IsWeaponActive.AddListener(isShooting);
+        weaponHitter.IsWeaponActive.AddListener(IsShooting);
+        weaponPicker.IsWeaponActive.AddListener(IsShooting);
     }
 
     private void OnDestroy()
     {
-        weaponHitter.IsWeaponActive.RemoveListener(isShooting);
-        weaponPicker.IsWeaponActive.RemoveListener(isShooting);
+        weaponHitter.IsWeaponActive.RemoveListener(IsShooting);
+        weaponPicker.IsWeaponActive.RemoveListener(IsShooting);
     }
 
     private void Update()
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
         WeaponsAction(deltaTime);
     }
 
-    private bool hasHittedSomething(out RaycastHit hit)
+    private bool HasHittedSomething(out RaycastHit hit)
     {
         bool hasHitted = Physics.Raycast(transform.position, transform.forward, out hit, playerHitterStats.range);
         if (hasHitted)
@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void isShooting(bool state)
+    private void IsShooting(bool state)
     {
         canShoot = !state;
     }
@@ -118,7 +118,7 @@ public class PlayerController : MonoBehaviour
 
     private void CalculateShootEndPosition(out RaycastHit hit)
     {
-        if (hasHittedSomething(out hit))
+        if (HasHittedSomething(out hit))
         {
             finalPos = hit.collider.transform.position;
         }
