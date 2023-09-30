@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class WeaponPicker : Weapon
@@ -10,8 +11,22 @@ public class WeaponPicker : Weapon
     {
     }
 
-    public override void DoStuff()
+    public override void StartAction(Collider collider)
     {
-        Debug.Log("Picker");
+        if (collider)
+        {
+            Debug.Log(collider.name);
+            collider.transform.SetParent(hook.transform);
+            collider.transform.localPosition = Vector3.zero;
+        }
+    }
+
+    public override void EndAction(Collider collider1)
+    {
+        if (collider1)
+        {
+            Destroy(collider1.gameObject);
+            AddScore.Invoke(10);
+        }
     }
 }

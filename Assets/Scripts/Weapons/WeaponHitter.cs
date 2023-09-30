@@ -15,8 +15,14 @@ public class WeaponHitter : Weapon
     }
 
 
-    public override void DoStuff()
+
+    public override void StartAction(Collider collider)
     {
-        Debug.Log("Hitter");
+        throw new System.NotImplementedException();
+    }
+
+    public override void EndAction(Collider collider1)
+    {
+        throw new System.NotImplementedException();
     }
 }

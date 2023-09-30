@@ -7,18 +7,28 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private WeaponPicker weaponPicker;
     [SerializeField] private WeaponHitter weaponHitter;
 
+    private bool canShoot;
     private Rigidbody rigidbody;
     private Vector3 finalPos;
-
+    public PlayerStats PlayerStats => playerStats;
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
         weaponHitter.playerHitterStats = playerHitterStats;
         weaponPicker.playerHitterStats = playerHitterStats;
+        canShoot = true;
     }
 
     void Start()
     {
+        weaponHitter.IsWeaponActive.AddListener(isShooting);
+        weaponPicker.IsWeaponActive.AddListener(isShooting);
+    }
+
+    private void OnDestroy()
+    {
+        weaponHitter.IsWeaponActive.RemoveListener(isShooting);
+        weaponPicker.IsWeaponActive.RemoveListener(isShooting);
     }
 
     private void Update()
@@ -41,9 +51,6 @@ public class PlayerController : MonoBehaviour
         return hasHitted;
     }
 
-    private void OnDestroy()
-    {
-    }
 
     private void Rotate(float deltaTime)
     {
@@ -53,6 +60,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
         }
+    }
+
+    private void isShooting(bool state)
+    {
+        canShoot = !state;
     }
 
     private void Movement(float deltaTime)
@@ -86,7 +98,25 @@ public class PlayerController : MonoBehaviour
 
     private void WeaponsAction(float deltaTime)
     {
-        if (hasHittedSomething(out var hit))
+        if (canShoot)
+        {
+            if (Input.GetKey(KeyCode.Q))
+            {
+                CalculateShootEndPosition(out RaycastHit hit);
+                weaponHitter.Shoot(hit,finalPos);
+            }
+
+            if (Input.GetKey(KeyCode.E))
+            {
+                CalculateShootEndPosition(out RaycastHit hit);
+                weaponPicker.Shoot(hit,finalPos);
+            }
+        }
+    }
+
+    private void CalculateShootEndPosition(out RaycastHit hit)
+    {
+        if (hasHittedSomething(out hit))
         {
             finalPos = hit.collider.transform.position;
         }
@@ -94,11 +124,7 @@ public class PlayerController : MonoBehaviour
         {
             finalPos = transform.forward * playerHitterStats.range;
         }
-
-        if (Input.GetKey(KeyCode.Q))
-            weaponHitter.Shoot(finalPos);
-        if (Input.GetKey(KeyCode.E))
-            weaponPicker.Shoot(finalPos);
+        
     }
 
     private bool CanMove() => true;
