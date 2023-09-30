@@ -6,7 +6,7 @@ using UnityEngine;
 public class SharkInputController : MonoBehaviour
 {
     [SerializeField] private SharkStats _stats;
-    [SerializeField] private GameObject _target;
+    [SerializeField] private PlayerController _target;
     public Action OnSharkMove;
     public Action OnSharkPatrol;
     public Action OnSharkAttack;
@@ -16,7 +16,9 @@ public class SharkInputController : MonoBehaviour
     public float GetRotationSpeed() { return _stats.rotationSpeed; }
     public float GetDetectionAngle() { return _stats.detectionAngle; }
     public float GetStopDistance() { return _stats.stopDistance; }
-    public GameObject GetPlayer() { return _target; }
+    public float GetSharkDamage() { return _stats.damage; }
+    public ForceMode GetSharkForce() { return _stats.sharkForce; }
+    public PlayerController GetPlayer() { return _target; }
 
     public void Update()
     {

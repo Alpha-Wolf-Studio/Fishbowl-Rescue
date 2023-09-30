@@ -10,4 +10,6 @@ public class SharkStats : ScriptableObject
     public float rotationSpeed = 10.0f;
     public float detectionAngle = 45.0f;
     public float stopDistance = 5.0f;
+    public float damage = 20.0f;
+    public ForceMode sharkForce = ForceMode.Impulse;
 }

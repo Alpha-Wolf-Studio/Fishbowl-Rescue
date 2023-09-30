@@ -32,11 +32,12 @@ public class SharkStateMachine : State_Machine
         _patrolState.OnLerpToTarget += OnPatrolLerpToTarget;
         _moveState.OnLerpToPlayer += OnPatrolLerpToTarget;
         _moveState.OnReadyToAttack += OnSharkAttack;
+        _attackState.OnPlayerAttacked += OnSharkPatrol;
 
         
         base.OnEnable();
     }
-
+    
     private void OnPatrolLerpToTarget(Vector3 obj)
     {
         if (_lookAtTarget != null)
