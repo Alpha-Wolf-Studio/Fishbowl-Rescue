@@ -10,16 +10,9 @@ public class SharkInputController : MonoBehaviour
     public Action OnSharkMove;
     public Action OnSharkPatrol;
     public Action OnSharkAttack;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public float GetPatrolSpeed() { return _stats.patrolSpeed; }
+    public float GetChaseSpeed() { return _stats.chaseSpeed; }
+    public float GetRotationSpeed() { return _stats.rotationSpeed; }
+    
 }

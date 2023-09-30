@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43d44ca7851566147901623150b42098, type: 3}
+  m_Script: {fileID: 11500000, guid: e990e0f6e3517ea4fb7fcdd754c33438, type: 3}
   m_Name: Shark Stats
   m_EditorClassIdentifier: 
   life: 100
-  attackCooldown: 1.5
-  speedForward: 40
-  speedDirections: 20
-  speedUp: 30
-  speedDown: 30
+  patrolSpeed: 10
+  chaseSpeed: 40
+  rotationSpeed: 10
