@@ -20,7 +20,7 @@ public class SharkAttackState : SharkBaseState
         base.UpdatePhysics();
     }
     
-    private void playAttackAnimation()
+    private void PlayAttackAnimation()
     {
         
     }

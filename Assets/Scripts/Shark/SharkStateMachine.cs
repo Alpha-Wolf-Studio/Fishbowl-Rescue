@@ -30,6 +30,8 @@ public class SharkStateMachine : State_Machine
         _sharkController.OnSharkPatrol += OnSharkPatrol;
         _sharkController.OnSharkAttack += OnSharkAttack;
         _patrolState.OnLerpToTarget += OnPatrolLerpToTarget;
+        _moveState.OnLerpToPlayer += OnPatrolLerpToTarget;
+        _moveState.OnReadyToAttack += OnSharkAttack;
 
         
         base.OnEnable();
@@ -84,5 +86,8 @@ public class SharkStateMachine : State_Machine
         _sharkController.OnSharkMove -= OnSharkMove;
         _sharkController.OnSharkPatrol -= OnSharkPatrol;
         _sharkController.OnSharkAttack -= OnSharkAttack;
+        _patrolState.OnLerpToTarget -= OnPatrolLerpToTarget;
+        _moveState.OnLerpToPlayer -= OnPatrolLerpToTarget;
+        _moveState.OnReadyToAttack -= OnSharkAttack;
     }
 }

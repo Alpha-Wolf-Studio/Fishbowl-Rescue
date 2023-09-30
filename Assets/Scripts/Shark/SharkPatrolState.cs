@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -16,6 +14,7 @@ public class SharkPatrolState : SharkBaseState
     public override void OnEnter()
     {
         currentTarget = GetRandomPoint();
+        OnLerpToTarget.Invoke(currentTarget);
         base.OnEnter();
     }
 
@@ -42,7 +41,7 @@ public class SharkPatrolState : SharkBaseState
         base.UpdatePhysics();
     }
     
-    private void playAttackAnimation()
+    private void PlayPatrolAnimation()
     {
         
     }

@@ -256,6 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stats: {fileID: 11400000, guid: 4674a8b6661d24c4c9682bae8f95754e, type: 2}
+  _target: {fileID: 0}
 --- !u!114 &7456345180235444072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,4 +275,4 @@ MonoBehaviour:
   OnStateExit:
     m_PersistentCalls:
       m_Calls: []
-  sharkController: {fileID: 8419804761830686466}
+  _sharkController: {fileID: 8419804761830686466}
