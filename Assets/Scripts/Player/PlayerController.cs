@@ -96,6 +96,8 @@ public class PlayerController : MonoBehaviour
 
     private void Move(float deltaTime, Vector3 velocity) =>
         rigidbody.AddForce(velocity * deltaTime, playerStats.forceMode);
+    public void MoveByAttack( Vector3 velocity, ForceMode forceMode) =>
+        rigidbody.AddForce(velocity, forceMode);
 
     private void MoveUp(float deltaTime) => Move(deltaTime, transform.up * playerStats.speedUp);
     private void MoveDown(float deltaTime) => Move(deltaTime, -transform.up * playerStats.speedDown);
