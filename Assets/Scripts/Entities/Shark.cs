@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Shark : IInteractable
+public class Shark : Interactable
 {
-    public override UnityEvent<IInteractable> onInteract { get; set; } = new UnityEvent<IInteractable>();
+    public override UnityEvent<Interactable> onInteract { get; set; } = new UnityEvent<Interactable>();
     [field: SerializeField] public override InteractType InteractType { get; set; }
 
     private void Start () { }
@@ -24,5 +24,6 @@ public class Shark : IInteractable
         transform.SetParent(parent);
         transform.position = parent.position;
         transform.up = parent.up;
+        transform.forward = parent.forward;
     }
 }

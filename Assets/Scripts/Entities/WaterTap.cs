@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class WaterTap : IInteractable
+public class WaterTap : Interactable
 {
-    public override UnityEvent<IInteractable> onInteract { get; set; } = new UnityEvent<IInteractable>();
+    public override UnityEvent<Interactable> onInteract { get; set; } = new UnityEvent<Interactable>();
     [field: SerializeField] public override InteractType InteractType { get; set; }
 
     private void Start () { }

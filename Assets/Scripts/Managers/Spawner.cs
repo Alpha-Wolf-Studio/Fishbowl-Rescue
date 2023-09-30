@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private List<Transform> spawnPoints = new List<Transform>();
-    [field: SerializeField] private List<IInteractable> waterTaps = new List<IInteractable>();
+    [field: SerializeField] private List<Interactable> waterTaps = new List<Interactable>();
     [SerializeField] private PlayerController player;
 
     [Space(10)]
@@ -20,7 +20,7 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    private IEnumerator SpawnWaterTap (IInteractable interactable)
+    private IEnumerator SpawnWaterTap (Interactable interactable)
     {
         yield return new WaitForSeconds(2.0f);
         bool availableSpawn = false;
@@ -44,7 +44,7 @@ public class Spawner : MonoBehaviour
         interactable.Activate(spawn);
     }
 
-    private void OnInteractWaterTap(IInteractable interactable)
+    private void OnInteractWaterTap(Interactable interactable)
     {
         StartCoroutine(SpawnWaterTap(interactable));
     }
