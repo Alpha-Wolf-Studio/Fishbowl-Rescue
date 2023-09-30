@@ -54,13 +54,19 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void Rotate(float deltaTime)
+    private void Rotate (float deltaTime)
     {
         if (!CanMove())
             return;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(1))
         {
+            float mouseX = Input.GetAxisRaw("Mouse X");
+            float mouseY = Input.GetAxisRaw("Mouse Y");
+            float rotacionX = -mouseY * playerStats.speedRotation;
+            float rotacionY = mouseX * playerStats.speedRotation;
+
+            transform.Rotate(rotacionX, rotacionY, 0, Space.Self);
         }
     }
 
