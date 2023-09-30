@@ -9,9 +9,8 @@ public abstract class Weapon : MonoBehaviour
 {
     [SerializeField] public PlayerWeaponHitterStats playerHitterStats;
     [SerializeField] protected List<InteractType> interactType = new List<InteractType>();
-
-    [FormerlySerializedAs("glove")] [SerializeField]
-    protected GameObject hook;
+    [SerializeField] protected GameObject hook;
+    [FormerlySerializedAs("hookRope")] [SerializeField] protected GameObject rope;
     [SerializeField] protected Transform hookPos;
     public UnityEvent<bool> IsWeaponActive { get; } = new UnityEvent<bool>();
     private Coroutine moveToTarget;
@@ -53,12 +52,26 @@ public abstract class Weapon : MonoBehaviour
     {
         Vector3 initialPos = hook.transform.position;
         float maxDuration = playerHitterStats.timeUntilTarget;
+
+        rope.transform.LookAt(hitPoint);
+        float initialScaleZ = rope.transform.localScale.z;
+
         float timer = 0;
         while (timer < maxDuration)
         {
             float t = timer / maxDuration;
+
+            float dist = Vector3.Distance(initialPos, hitPoint);
+            float maxScaleZ = dist;
+            float lerpScale = Mathf.Lerp(initialScaleZ, maxScaleZ, t);
+            rope.transform.localScale = new Vector3(1, 1, lerpScale);
+
             Vector3 currentPos = Vector3.Lerp(initialPos, hitPoint, t);
             hook.transform.position = currentPos;
+
+
+            rope.transform.LookAt(hook.transform.position);
+
             timer += Time.deltaTime;
             yield return null;
         }
@@ -74,18 +87,29 @@ public abstract class Weapon : MonoBehaviour
         float timer = 0;
         while (timer < playerHitterStats.waitTime)
         {
+            rope.transform.LookAt(hook.transform.position);
+            float dist = Vector3.Distance(rope.transform.position, hook.transform.position);
+            rope.transform.localScale = new Vector3(1, 1, dist);
             timer += Time.deltaTime;
             yield return null;
         }
+
         Vector3 initialPos = hook.transform.position;
+
+        float initialScaleZ = rope.transform.localScale.z;
+        float maxScaleZ = 1;
+
         timer = 0;
         float maxDuration = playerHitterStats.timeUntilComeback;
         while (timer < maxDuration)
         {
+            rope.transform.LookAt(hook.transform.position);
             Vector3 finalPos = hookPos.position;
             float t = timer / maxDuration;
+            float lerpScale = Mathf.Lerp(initialScaleZ, maxScaleZ, t);
             Vector3 currentPos = Vector3.Lerp(initialPos, finalPos, t);
             hook.transform.position = currentPos;
+            rope.transform.localScale = new Vector3(1, 1, lerpScale);
             timer += Time.deltaTime;
             yield return null;
         }
@@ -96,6 +120,4 @@ public abstract class Weapon : MonoBehaviour
         IsWeaponActive.Invoke(false);
         EndAction(collider);
     }
-
-    
 }
