@@ -9,16 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d0199c11aa6f514784c5c69cd8378d8, type: 3}
-  m_Name: PlayFabEditorPrefsSO
+  m_Script: {fileID: 11500000, guid: 473f98385ab766e4d8a4939ac9451f2e, type: 3}
+  m_Name: Player Stats
   m_EditorClassIdentifier: 
-  DevAccountEmail: 
-  DevAccountToken: 
-  AadAuthorization: 
-  SelectedStudio: 
-  SdkPath: 
-  EdExPath: 
-  LocalCloudScriptPath: 
-  PanelIsShown: 0
-  curMainMenuIdx: 0
-  curSubMenuIdx: 0
+  life: 100
+  forceMode: 5
+  speedForward: 40
+  speedDirections: 20
+  speedUp: 30
+  speedDown: 30
