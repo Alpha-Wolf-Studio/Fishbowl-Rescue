@@ -63,7 +63,10 @@ public class PlayerController : MonoBehaviour
 
     private void WeaponsAction (float deltaTime)
     {
-
+        if (Input.GetKey(KeyCode.Q))
+            weaponHitter.Shoot(transform.forward);
+        if (Input.GetKey(KeyCode.E))
+            weaponPicker.Shoot(transform.forward);
     }
 
     private bool CanMove () => true;
