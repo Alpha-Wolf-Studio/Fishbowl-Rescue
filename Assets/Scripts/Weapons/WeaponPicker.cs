@@ -1,16 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponPicker : Weapon
 {
-    void Start()
+    private void Start()
     {
         
     }
 
-    void Update()
+    private void Update()
     {
         
+    }
+
+    public override void Shoot (Vector3 hitPoint)
+    {
+
     }
 }
