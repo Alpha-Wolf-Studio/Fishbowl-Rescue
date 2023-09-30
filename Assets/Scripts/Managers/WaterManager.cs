@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class WaterManager : MonoBehaviourSingleton<WaterManager>
@@ -12,7 +11,8 @@ public class WaterManager : MonoBehaviourSingleton<WaterManager>
 
     private void Update ()
     {
-        
+        float deltaTime = Time.deltaTime;
+        CurrentWater -= speedDecrease * deltaTime;
     }
 
     private void RemoveWater (float amount)

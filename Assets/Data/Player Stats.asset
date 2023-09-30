@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 473f98385ab766e4d8a4939ac9451f2e, type: 3}
   m_Name: Player Stats
   m_EditorClassIdentifier: 
+  currentLife: 100
+  maxLife: 100
   life: 100
   forceMode: 5
-  speedForward: 40
-  speedDirections: 20
-  speedUp: 30
-  speedDown: 30
+  speedForward: 160
+  speedDirections: 80
+  speedUp: 120
+  speedDown: 120

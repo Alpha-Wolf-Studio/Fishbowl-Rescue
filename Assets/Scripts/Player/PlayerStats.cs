@@ -3,6 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Player Stats", menuName = "Player/PlayerStats", order = 1)]
 public class PlayerStats : ScriptableObject
 {
+    public float currentLife = 100;
+    public float maxLife = 100;
     public float life = 100;
     [Space(10)]
     public ForceMode forceMode = ForceMode.Acceleration;
