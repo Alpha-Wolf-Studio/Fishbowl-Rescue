@@ -18,11 +18,11 @@ public class WeaponHitter : Weapon
 
     public override void StartAction(Collider collider)
     {
-        throw new System.NotImplementedException();
+      
     }
 
     public override void EndAction(Collider collider1)
     {
-        throw new System.NotImplementedException();
+   
     }
 }

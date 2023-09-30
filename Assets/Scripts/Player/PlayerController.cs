@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -11,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rigidbody;
     private Vector3 finalPos;
     public PlayerStats PlayerStats => playerStats;
+
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -103,13 +105,13 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.Q))
             {
                 CalculateShootEndPosition(out RaycastHit hit);
-                weaponHitter.Shoot(hit,finalPos);
+                weaponHitter.Shoot(hit, finalPos);
             }
 
             if (Input.GetKey(KeyCode.E))
             {
                 CalculateShootEndPosition(out RaycastHit hit);
-                weaponPicker.Shoot(hit,finalPos);
+                weaponPicker.Shoot(hit, finalPos);
             }
         }
     }
@@ -122,9 +124,14 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            finalPos = transform.forward * playerHitterStats.range;
+            finalPos = transform.position + transform.forward * playerHitterStats.range;
         }
-        
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(transform.position, transform.forward * playerHitterStats.range);
     }
 
     private bool CanMove() => true;

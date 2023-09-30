@@ -13,9 +13,10 @@ public class WeaponPicker : Weapon
 
     public override void StartAction(Collider collider)
     {
-        if (collider)
+        if (collider && collider.TryGetComponent<Interactable>(out Interactable interactable) &&
+            interactable.InteractType == global::InteractType.Pick)
         {
-            Debug.Log(collider.name);
+           Debug.Log(collider.name,collider.gameObject);
             collider.transform.SetParent(hook.transform);
             collider.transform.localPosition = Vector3.zero;
         }

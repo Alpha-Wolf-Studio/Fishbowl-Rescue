@@ -36,10 +36,11 @@ public abstract class Weapon : MonoBehaviour
             IsWeaponActive.Invoke(true);
             if (hit.collider)
             {
-                moveToTarget = StartCoroutine(MoveUpToTarget(finalPos, collider: hit.collider));
+                moveToTarget = StartCoroutine(MoveUpToTarget(finalPos, hit.collider));
             }
             else
             {
+                Debug.Log(finalPos);
                 moveToTarget = StartCoroutine(MoveUpToTarget(finalPos));
             }
         }
