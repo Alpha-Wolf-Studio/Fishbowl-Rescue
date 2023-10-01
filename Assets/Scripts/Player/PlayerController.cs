@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,9 +9,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private WeaponPicker weaponPicker;
     [SerializeField] private WeaponHitter weaponHitter;
 
+    [SerializeField] private   KeyCode pauseKey = KeyCode.P;
     private bool canShoot;
     private Rigidbody rigidbody;
     private Vector3 finalPos;
+    public UnityEvent OnPlayerDeath { get; } = new UnityEvent();
+    public UnityEvent OnPauseInput{ get; } = new UnityEvent();
     public PlayerStats PlayerStats => playerStats;
 
     private void Awake()
@@ -18,6 +22,7 @@ public class PlayerController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
         weaponHitter.playerHitterStats = playerHitterStats;
         weaponPicker.playerHitterStats = playerHitterStats;
+        playerStats.currentLife = playerStats.maxLife;
         canShoot = true;
     }
 
@@ -37,7 +42,7 @@ public class PlayerController : MonoBehaviour
     {
         FixRotation();
         float deltaTime = Time.fixedDeltaTime;
-
+        CheckPauseInput();
         Rotate(deltaTime);
         Movement(deltaTime);
         WeaponsAction(deltaTime);
@@ -101,6 +106,14 @@ public class PlayerController : MonoBehaviour
             MoveRight(deltaTime);
     }
 
+    private void CheckPauseInput()
+    {
+        if (Input.GetKeyDown(pauseKey))
+        {
+            OnPauseInput.Invoke();
+        }
+    }
+
     private void Move(float deltaTime, Vector3 velocity) =>
         rigidbody.AddForce(velocity * deltaTime, playerStats.forceMode);
 
@@ -148,6 +161,15 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawRay(transform.position, transform.forward * playerHitterStats.range);
+    }
+
+    public void ReceiveDamage(float damage)
+    {
+        playerStats.currentLife -= damage;
+        if (playerStats.currentLife < 1)
+        {
+            OnPlayerDeath.Invoke();
+        }
     }
 
     private bool CanMove() => true;
