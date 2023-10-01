@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1738074489369948214}
   - component: {fileID: 1738074489369948219}
   - component: {fileID: 1738074489369948216}
-  - component: {fileID: 1738074489369948217}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -85,19 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1738074489369948217
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1738074489369948215}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1738074489763077842
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1738074489763077844}
   - component: {fileID: 1639443213298201208}
+  - component: {fileID: 2273593837484811863}
   m_Layer: 0
   m_Name: Water Tap
   m_TagString: Untagged
@@ -144,6 +131,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <InteractType>k__BackingField: 2
+--- !u!65 &2273593837484811863
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738074489763077842}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 2.3, z: 1.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1738074490901748506
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,7 +155,6 @@ GameObject:
   - component: {fileID: 1738074490901748509}
   - component: {fileID: 1738074490901748510}
   - component: {fileID: 1738074490901748511}
-  - component: {fileID: 1738074490901748508}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -228,16 +227,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1738074490901748508
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1738074490901748506}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}

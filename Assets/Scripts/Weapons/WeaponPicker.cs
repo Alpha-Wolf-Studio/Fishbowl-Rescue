@@ -13,6 +13,7 @@ public class WeaponPicker : Weapon
 
     public override void StartAction(Collider collider)
     {
+        base.StartAction(collider);
         if (collider && collider.TryGetComponent<Interactable>(out Interactable interactable) &&
             interactable.InteractType == global::InteractType.Pick)
         {

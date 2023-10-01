@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class WeaponHitter : Weapon
 {
-    
-
     private void Start()
     {
     }
@@ -15,18 +13,18 @@ public class WeaponHitter : Weapon
     }
 
 
-
     public override void StartAction(Collider collider)
     {
+        base.StartAction(collider);
         if (collider && collider.TryGetComponent<SharkStateMachine>(out SharkStateMachine shark))
         {
-            Debug.Log(shark.currentState,gameObject);
+            Debug.Log(shark.currentState, gameObject);
             shark.GetSharkInput().Stun();
         }
     }
 
     public override void EndAction(Collider collider1)
     {
-   
+        
     }
 }
