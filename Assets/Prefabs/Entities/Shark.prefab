@@ -65,7 +65,7 @@ MonoBehaviour:
   animator: {fileID: 8717970475737781981}
   target: {fileID: 0}
   targetPoint: {fileID: 0}
-  sharkStats: {fileID: 11400000, guid: 4674a8b6661d24c4c9682bae8f95754e, type: 2}
+  SharkStats: {fileID: 11400000, guid: 4674a8b6661d24c4c9682bae8f95754e, type: 2}
 --- !u!114 &7413533866053063212
 MonoBehaviour:
   m_ObjectHideFlags: 0
