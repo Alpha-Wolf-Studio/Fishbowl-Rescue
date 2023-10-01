@@ -125,6 +125,7 @@ public abstract class Weapon : MonoBehaviour
 
         hook.transform.SetParent(hookPos);
         hook.transform.localPosition = Vector3.zero;
+        hook.transform.rotation = Quaternion.identity;
         moveToTarget = null;
         IsWeaponActive.Invoke(false);
         EndAction(collider);
