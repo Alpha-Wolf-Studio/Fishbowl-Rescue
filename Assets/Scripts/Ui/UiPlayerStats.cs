@@ -17,6 +17,8 @@ public class UiPlayerStats : MonoBehaviour
         float waterNormalize = WaterManager.Instance.CurrentWater / WaterManager.Instance.MaxWater;
         float lifeNormalize = playerController.PlayerStats.currentLife / playerController.PlayerStats.maxLife;
 
+        UpdateFishAmount(GameManager.Instance.FishCount);
+        UpdateSharkHitted(GameManager.Instance.SharkHits);
         imageWater.fillAmount = waterNormalize;
         imageLife.fillAmount = lifeNormalize;
         textTimer.text = ConvertSecondsToTimer(GameManager.Instance.currentTime);

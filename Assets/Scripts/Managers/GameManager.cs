@@ -3,8 +3,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviourSingleton<GameManager>
 {
     public float currentTime;
-    private float score = 0;
-    private float hit = 0;
+    public int FishCount { get; private set; } = 0;
+    public int SharkHits { get; private set; } = 0;
     [SerializeField] private PlayerController player;
     [SerializeField] private UIControllerInGame uiController;
     private bool isPaused;
@@ -22,13 +22,13 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         uiController.OnPausedGame.RemoveListener(TogglePause); 
     }
 
-    public void AddScore(float score)
+    public void AddScore(int score)
     {
-        this.score += score;
+        this.FishCount += score;
     } 
     public void AddHit()
     {
-        this.hit++;
+        this.SharkHits++;
     }
 
     private void Update ()
