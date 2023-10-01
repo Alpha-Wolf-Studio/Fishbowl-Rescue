@@ -13,6 +13,8 @@ public class PlayerStats : ScriptableObject
     public float speedDirections = 20;
     public float speedUp = 30;
     public float speedDown = 30;
-    //[Space(10)]
-    
+
+    [Space(10)]
+    public int signX = 1;
+    public int signY = -1;
 }

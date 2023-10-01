@@ -15,7 +15,10 @@ public class UiControllerSettings : MonoBehaviour
     [SerializeField] private Slider sliderVolumeGeneral;
     [SerializeField] private Slider sliderVolumeMusic;
     [SerializeField] private Slider sliderVolumeEffect;
+    [SerializeField] private Toggle toggleInvertX;
+    [SerializeField] private Toggle toggleInvertY;
     [SerializeField] private Button closeButton;
+    [SerializeField] private PlayerStats playerStats;
 
     private void Awake ()
     {
@@ -23,6 +26,14 @@ public class UiControllerSettings : MonoBehaviour
         sliderVolumeMusic.onValueChanged.AddListener(OnSliderVolumeMusicChanged);
         sliderVolumeEffect.onValueChanged.AddListener(OnSliderVolumeEffectChanged);
         closeButton.onClick.AddListener(OnSettingsCloseButtonClicked);
+        toggleInvertX.onValueChanged.AddListener(OnToggleXClick);
+        toggleInvertY.onValueChanged.AddListener(OnToggleYClick);
+    }
+
+    private void Start ()
+    {
+        toggleInvertX.SetIsOnWithoutNotify(playerStats.signX == 1);
+        toggleInvertY.SetIsOnWithoutNotify(playerStats.signY == 1);
     }
 
     private void OnDestroy ()
@@ -31,24 +42,36 @@ public class UiControllerSettings : MonoBehaviour
         sliderVolumeMusic.onValueChanged.RemoveAllListeners();
         sliderVolumeEffect.onValueChanged.RemoveAllListeners();
         closeButton.onClick.RemoveAllListeners();
+        toggleInvertX.onValueChanged.RemoveAllListeners();
+        toggleInvertY.onValueChanged.RemoveAllListeners();
     }
 
-    private void OnSliderVolumeGeneralChanged(float volume)
+    private void OnSliderVolumeGeneralChanged (float volume)
     {
         float newValue = logarithm.Evaluate(volume) * maxVolume - maxVolume;
         audioMixer.SetFloat("VolumeGeneral", newValue);
     }
 
-    private void OnSliderVolumeMusicChanged(float volume)
+    private void OnSliderVolumeMusicChanged (float volume)
     {
         float newValue = logarithm.Evaluate(volume) * maxVolume - maxVolume;
         audioMixer.SetFloat("VolumeMusic", newValue);
     }
 
-    private void OnSliderVolumeEffectChanged(float volume)
+    private void OnSliderVolumeEffectChanged (float volume)
     {
         float newValue = logarithm.Evaluate(volume) * maxVolume - maxVolume;
         audioMixer.SetFloat("VolumeEffect", newValue);
+    }
+
+    private void OnToggleXClick (bool newValue)
+    {
+        playerStats.signX = newValue ? 1 : -1;
+    }
+
+    private void OnToggleYClick (bool newValue)
+    {
+        playerStats.signY = newValue ? 1 : -1;
     }
 
     private void OnSettingsCloseButtonClicked () => onSettingsCloseButtonClicked?.Invoke();

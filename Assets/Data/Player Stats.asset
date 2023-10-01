@@ -21,3 +21,5 @@ MonoBehaviour:
   speedDirections: 80
   speedUp: 120
   speedDown: 120
+  signX: -1
+  signY: 1
