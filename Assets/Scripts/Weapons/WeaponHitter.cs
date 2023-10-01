@@ -1,30 +1,13 @@
-using System.Collections;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class WeaponHitter : Weapon
 {
-    private void Start()
-    {
-    }
-
-    private void Update()
-    {
-    }
-
-
-    public override void StartAction(Collider collider)
+    public override void StartAction (Collider collider)
     {
         base.StartAction(collider);
-        if (collider && collider.TryGetComponent<SharkStateMachine>(out SharkStateMachine shark))
-        {
-            Debug.Log(shark.currentState, gameObject);
-            shark.GetSharkInput().Stun();
-        }
+        if (collider && collider.TryGetComponent<SharkController>(out SharkController shark))
+            shark.OnReceiveAttack();
     }
 
-    public override void EndAction(Collider collider1)
-    {
-        
-    }
+    public override void EndAction (Collider collider1) { }
 }

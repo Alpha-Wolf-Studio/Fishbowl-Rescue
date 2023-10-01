@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2562242986463289632
+--- !u!1 &7413533866053063201
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,86 +8,114 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2562242986463289634}
-  - component: {fileID: 2562242986463289633}
-  - component: {fileID: 8419804761830686466}
-  - component: {fileID: 7456345180235444072}
-  m_Layer: 0
+  - component: {fileID: 7413533866053063203}
+  - component: {fileID: 7413533866053063210}
+  - component: {fileID: 7413533866053063213}
+  - component: {fileID: 7413533866053063212}
+  - component: {fileID: 7413533866053063215}
+  - component: {fileID: 7413533866053063214}
+  m_Layer: 8
   m_Name: Shark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2562242986463289634
+--- !u!4 &7413533866053063203
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2562242986463289632}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 7413533866053063201}
+  m_LocalRotation: {x: -0, y: 0.99992937, z: -0, w: 0.011887931}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5589791645245660834}
+  - {fileID: 648006303886273955}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2562242986463289633
+  m_LocalEulerAnglesHint: {x: 0, y: 178.638, z: 0}
+--- !u!114 &7413533866053063210
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2562242986463289632}
+  m_GameObject: {fileID: 7413533866053063201}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 806944bd61ff01243aa3147da49f54ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <InteractType>k__BackingField: 0
---- !u!114 &8419804761830686466
+--- !u!114 &7413533866053063213
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2562242986463289632}
+  m_GameObject: {fileID: 7413533866053063201}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd51bdcb98a485b4e8691249d563f800, type: 3}
+  m_Script: {fileID: 11500000, guid: aff9708446fe0674f95399ff25dbf42f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stats: {fileID: 11400000, guid: 4674a8b6661d24c4c9682bae8f95754e, type: 2}
-  _target: {fileID: 0}
---- !u!114 &7456345180235444072
+  animator: {fileID: 8717970475737781981}
+  target: {fileID: 0}
+  targetPoint: {fileID: 0}
+  SharkStats: {fileID: 11400000, guid: 4674a8b6661d24c4c9682bae8f95754e, type: 2}
+--- !u!114 &7413533866053063212
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2562242986463289632}
+  m_GameObject: {fileID: 7413533866053063201}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0926b7e71d4d033469f87cee8b9f771e, type: 3}
+  m_Script: {fileID: 11500000, guid: e909f7992b56b354da59625c46026a6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnStateEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  OnStateExit:
-    m_PersistentCalls:
-      m_Calls: []
-  _sharkController: {fileID: 8419804761830686466}
---- !u!1001 &6993529177970053576
+  SharkController: {fileID: 0}
+--- !u!114 &7413533866053063215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7413533866053063201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6124f7351f781e545a1e493a08fd8b49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SharkController: {fileID: 0}
+--- !u!114 &7413533866053063214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7413533866053063201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ca5bed3317c34947bf710de5f93802d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SharkController: {fileID: 0}
+--- !u!1001 &2621871331204309705
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 2562242986463289634}
+    m_TransformParent: {fileID: 7413533866053063203}
     m_Modifications:
+    - target: {fileID: 173409934776230180, guid: 16862311a351f284babb920b72150d8f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 473194947104384457, guid: 16862311a351f284babb920b72150d8f, type: 3}
       propertyPath: m_Name
       value: Tiburon
@@ -136,10 +164,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7418001561348312703, guid: 16862311a351f284babb920b72150d8f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8106891243474897331, guid: 16862311a351f284babb920b72150d8f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8149220615526793783, guid: 16862311a351f284babb920b72150d8f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16862311a351f284babb920b72150d8f, type: 3}
---- !u!4 &5589791645245660834 stripped
+--- !u!4 &648006303886273955 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3214704102314102634, guid: 16862311a351f284babb920b72150d8f, type: 3}
-  m_PrefabInstance: {fileID: 6993529177970053576}
+  m_PrefabInstance: {fileID: 2621871331204309705}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8717970475737781981 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6673967276251100180, guid: 16862311a351f284babb920b72150d8f, type: 3}
+  m_PrefabInstance: {fileID: 2621871331204309705}
   m_PrefabAsset: {fileID: 0}
