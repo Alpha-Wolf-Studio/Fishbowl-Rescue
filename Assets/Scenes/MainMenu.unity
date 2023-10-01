@@ -2756,7 +2756,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1973008378}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -2818,36 +2818,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Dev
-
-    1
-
-    2
-
-    3
-
-
-    Art
-
-    1
-
-    2
-
-    3
-
-
-    GD
-
-    1
-
-    2
-
-    3
-
-'
+  m_text: "Dev\nIgnacio Arrastua\nFederico Olive\nDario Otranto\n\nArt\nJuan Brutti\nRocio
+    Gim\xE9nez\nSantiago Lafosse\nLautaro Lajmanovich\nFrancisco Sanche\n\nGD\nGoran
+    Blazevich\nFederico Delgado\n\nAudio\nJulian Silguero"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 84a60b4404d27fb45b352ea41f26925a, type: 2}
+  m_sharedMaterial: {fileID: 630244366064018345, guid: 84a60b4404d27fb45b352ea41f26925a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2871,10 +2847,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 23.4
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -2948,6 +2924,22 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4349078247065738113, guid: 4f489f0866aad954d8ae08a9e910aa64, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4424271784269195600, guid: 4f489f0866aad954d8ae08a9e910aa64, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5298501894036042870, guid: 4f489f0866aad954d8ae08a9e910aa64, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6110970939134784898, guid: 4f489f0866aad954d8ae08a9e910aa64, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7382868205526993996, guid: 4f489f0866aad954d8ae08a9e910aa64, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2955,6 +2947,14 @@ PrefabInstance:
     - target: {fileID: 7875590485750307136, guid: 4f489f0866aad954d8ae08a9e910aa64, type: 3}
       propertyPath: m_Name
       value: SettingsScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148804005892377833, guid: 4f489f0866aad954d8ae08a9e910aa64, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8171098994946525561, guid: 4f489f0866aad954d8ae08a9e910aa64, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8618964316556423186, guid: 4f489f0866aad954d8ae08a9e910aa64, type: 3}
       propertyPath: m_Pivot.x
