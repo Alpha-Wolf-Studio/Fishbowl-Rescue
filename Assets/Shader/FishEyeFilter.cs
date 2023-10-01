@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FishEyeFilter : MonoBehaviour
 {
+    [SerializeField] private PlayerStats playerStats;
     [SerializeField]
     private float _pow;
     [SerializeField] private Shader _shader;
@@ -24,11 +25,7 @@ public class FishEyeFilter : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.F))
-        {
-            _useFilter = !_useFilter;
-        }
-
+        _useFilter = playerStats.activateFishEye;
         OnUpdate();
     }
 

@@ -17,6 +17,7 @@ public class UiControllerSettings : MonoBehaviour
     [SerializeField] private Slider sliderVolumeEffect;
     [SerializeField] private Toggle toggleInvertX;
     [SerializeField] private Toggle toggleInvertY;
+    [SerializeField] private Toggle toggleFishEye;
     [SerializeField] private Button closeButton;
     [SerializeField] private PlayerStats playerStats;
 
@@ -28,7 +29,9 @@ public class UiControllerSettings : MonoBehaviour
         closeButton.onClick.AddListener(OnSettingsCloseButtonClicked);
         toggleInvertX.onValueChanged.AddListener(OnToggleXClick);
         toggleInvertY.onValueChanged.AddListener(OnToggleYClick);
+        toggleFishEye.onValueChanged.AddListener(OnToggleFishEye);
     }
+
 
     private void Start ()
     {
@@ -44,6 +47,7 @@ public class UiControllerSettings : MonoBehaviour
         closeButton.onClick.RemoveAllListeners();
         toggleInvertX.onValueChanged.RemoveAllListeners();
         toggleInvertY.onValueChanged.RemoveAllListeners();
+        toggleFishEye.onValueChanged.RemoveAllListeners();
     }
 
     private void OnSliderVolumeGeneralChanged (float volume)
@@ -72,6 +76,10 @@ public class UiControllerSettings : MonoBehaviour
     private void OnToggleYClick (bool newValue)
     {
         playerStats.signY = newValue ? 1 : -1;
+    }
+    private void OnToggleFishEye(bool newValue)
+    {
+        playerStats.activateFishEye = newValue;
     }
 
     private void OnSettingsCloseButtonClicked () => onSettingsCloseButtonClicked?.Invoke();

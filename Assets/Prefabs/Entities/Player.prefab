@@ -237,7 +237,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47228159d16244a418aec572aecb2769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pow: 0.95
+  playerStats: {fileID: 11400000, guid: 068f626c360a7524891c0704590174c3, type: 2}
+  _pow: 0.86
   _shader: {fileID: 4800000, guid: 00321bc1adbccaa4490972c576bcc06a, type: 3}
 --- !u!1 &7894010133839739610
 GameObject:

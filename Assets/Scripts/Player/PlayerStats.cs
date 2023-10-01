@@ -17,4 +17,5 @@ public class PlayerStats : ScriptableObject
     [Space(10)]
     public int signX = 1;
     public int signY = -1;
+    public bool activateFishEye = true;
 }

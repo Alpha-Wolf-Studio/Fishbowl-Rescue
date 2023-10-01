@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     protected override void OnAwaken()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         bool isPaused = false;
         player.OnPauseInput.AddListener(TogglePause); 
         uiController.OnPausedGame.AddListener(TogglePause); 
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     private void TogglePause()
     {
         isPaused = !isPaused;
+        Cursor.lockState = isPaused ? CursorLockMode.None : CursorLockMode.Locked;
         uiController.SetPauseMenu(isPaused);
     }
 }

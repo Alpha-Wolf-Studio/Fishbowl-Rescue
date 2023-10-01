@@ -79,14 +79,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.Q))
         {
             Vector3 rotationAngles = rigidbody.rotation.eulerAngles;
-            rotationZ = rotationAngles.z +(-1 * playerStats.speedRotationRoll * deltaTime);
+            rotationZ = rotationAngles.z +(1 * playerStats.speedRotationRoll * deltaTime);
             rigidbody.MoveRotation(Quaternion.Euler(rotationAngles.x, rotationAngles.y, rotationZ));
         }
 
         if (Input.GetKey(KeyCode.E))
         {
             Vector3 rotationAngles = rigidbody.rotation.eulerAngles;
-            rotationZ = rotationAngles.z + (1 * playerStats.speedRotationRoll * deltaTime);
+            rotationZ = rotationAngles.z + (-1 * playerStats.speedRotationRoll * deltaTime);
             rigidbody.MoveRotation(Quaternion.Euler(rotationAngles.x, rotationAngles.y, rotationZ));
         }
     }
