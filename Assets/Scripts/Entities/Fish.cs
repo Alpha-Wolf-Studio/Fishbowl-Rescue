@@ -6,19 +6,23 @@ public class Fish : Interactable
     public override UnityEvent<Interactable> onInteract { get; set; } = new UnityEvent<Interactable>();
     [field: SerializeField] public override InteractType InteractType { get; set; }
 
-    private void Start () { }
+    private void Start()
+    {
+    }
 
-    private void Update () { }
+    private void Update()
+    {
+    }
 
-    public override void OnInteract (InteractType interactType)
+    public override void OnInteract(InteractType interactType)
     {
         if (interactType != InteractType)
             return;
-
+        GameManager.Instance.AddScore(1);
         onInteract?.Invoke(this);
     }
 
-    public override void Activate (Transform parent)
+    public override void Activate(Transform parent)
     {
         gameObject.SetActive(true);
         transform.SetParent(parent);

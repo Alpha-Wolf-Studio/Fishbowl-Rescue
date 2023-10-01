@@ -10,13 +10,14 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] public PlayerWeaponHitterStats playerHitterStats;
     [SerializeField] protected List<InteractType> interactType = new List<InteractType>();
     [SerializeField] protected GameObject hook;
-    [FormerlySerializedAs("hookRope")] [SerializeField] protected GameObject rope;
+    [FormerlySerializedAs("hookRope")] [SerializeField]
+    protected GameObject rope;
     [SerializeField] protected Transform hookPos;
     public UnityEvent<bool> IsWeaponActive { get; } = new UnityEvent<bool>();
     private Coroutine moveToTarget;
     public List<InteractType> InteractType => interactType;
 
-    public UnityEvent<float> AddScore { get; } = new UnityEvent<float>();
+
 
     public void Awake()
     {
@@ -45,7 +46,15 @@ public abstract class Weapon : MonoBehaviour
         }
     }
 
-    public abstract void StartAction(Collider collider);
+    public virtual void StartAction(Collider collider)
+    {
+        if (collider && collider.TryGetComponent<Interactable>(out Interactable interact) &&
+            interact.InteractType == global::InteractType.Push)
+        {
+            interact.OnInteract(global::InteractType.Push);
+        }
+    }
+
     public abstract void EndAction(Collider collider1);
 
     IEnumerator MoveUpToTarget(Vector3 hitPoint, Collider collider = null)
