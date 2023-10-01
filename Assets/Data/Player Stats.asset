@@ -16,7 +16,7 @@ MonoBehaviour:
   maxLife: 100
   life: 100
   forceMode: 0
-  speedRotation: 5.59
+  speedRotation: 150
   speedForward: 293.6
   speedDirections: 293.6
   speedUp: 293.6

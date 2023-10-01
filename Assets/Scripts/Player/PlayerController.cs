@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void Rotate (float deltaTime)
+    private void Rotate(float deltaTime)
     {
         if (!CanMove())
             return;
@@ -64,8 +64,8 @@ public class PlayerController : MonoBehaviour
         {
             float mouseX = Input.GetAxisRaw("Mouse X");
             float mouseY = Input.GetAxisRaw("Mouse Y");
-            float rotacionX = mouseY * playerStats.speedRotation * playerStats.signY;
-            float rotacionY = mouseX * playerStats.speedRotation * playerStats.signX;
+            float rotacionX = mouseY * playerStats.speedRotation * deltaTime * playerStats.signY;
+            float rotacionY = mouseX * playerStats.speedRotation * deltaTime * playerStats.signX;
             rigidbody.AddTorque(rotacionX, rotacionY, 0, playerStats.forceMode);
         }
     }
@@ -103,7 +103,8 @@ public class PlayerController : MonoBehaviour
 
     private void Move(float deltaTime, Vector3 velocity) =>
         rigidbody.AddForce(velocity * deltaTime, playerStats.forceMode);
-    public void MoveByAttack( Vector3 velocity, ForceMode forceMode) =>
+
+    public void MoveByAttack(Vector3 velocity, ForceMode forceMode) =>
         rigidbody.AddForce(velocity, forceMode);
 
     private void MoveUp(float deltaTime) => Move(deltaTime, transform.up * playerStats.speedUp);
