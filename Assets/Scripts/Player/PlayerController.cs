@@ -4,17 +4,21 @@ using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Data")]
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private PlayerWeaponHitterStats playerHitterStats;
+    [Header("References")]
     [SerializeField] private WeaponPicker weaponPicker;
     [SerializeField] private WeaponHitter weaponHitter;
-
-    [SerializeField] private   KeyCode pauseKey = KeyCode.P;
+    private ModelReference model;
+    [Header("Variables")]
+    [SerializeField] private KeyCode pauseKey = KeyCode.P;
     private bool canShoot;
     private Rigidbody rigidbody;
     private Vector3 finalPos;
+
     public UnityEvent OnPlayerDeath { get; } = new UnityEvent();
-    public UnityEvent OnPauseInput{ get; } = new UnityEvent();
+    public UnityEvent OnPauseInput { get; } = new UnityEvent();
     public PlayerStats PlayerStats => playerStats;
 
     private void Awake()
@@ -131,17 +135,41 @@ public class PlayerController : MonoBehaviour
     {
         if (canShoot)
         {
+            CalculateShootEndPosition(out RaycastHit hit);
+
+            MarkHit(hit);
+
             if (Input.GetKey(KeyCode.Q))
             {
-                CalculateShootEndPosition(out RaycastHit hit);
                 weaponHitter.Shoot(hit, finalPos);
             }
 
             if (Input.GetKey(KeyCode.E))
             {
-                CalculateShootEndPosition(out RaycastHit hit);
                 weaponPicker.Shoot(hit, finalPos);
             }
+        }
+    }
+
+    private void MarkHit(RaycastHit hit)
+    {
+        if (hit.collider)
+        {
+            ModelReference newModelHit = hit.collider.GetComponent<ModelReference>();
+
+            if (newModelHit && newModelHit != model)
+            {
+                if (model)
+                    model.DeactivateOutline();
+
+                model = newModelHit;
+                model.ActivateOutline();
+            }
+        }
+        else if (model)
+        {
+            model.DeactivateOutline();
+            model = null;
         }
     }
 

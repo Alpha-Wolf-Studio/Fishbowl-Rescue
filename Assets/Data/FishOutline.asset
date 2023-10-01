@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ebbb505b9e940f49d8a463038e2f444, type: 3}
+  m_Name: FishOutline
+  m_EditorClassIdentifier: 
+  outlineMode: 3
+  normalColor: {r: 0.32941985, g: 1, b: 0, a: 1}
+  outlineDefaultWidth: 4
+  selectedColor: {r: 1, g: 0, b: 0, a: 1}
+  outlineSelectedWidth: 10
