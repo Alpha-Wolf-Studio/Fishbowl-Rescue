@@ -1,4 +1,5 @@
 using System;
+#if UNITY_EDITOR
 using UnityEditor;
 
 namespace CustomSceneSwitcher.Switcher.External
@@ -39,3 +40,4 @@ namespace CustomSceneSwitcher.Switcher.External
         
     }
 }
+#endif

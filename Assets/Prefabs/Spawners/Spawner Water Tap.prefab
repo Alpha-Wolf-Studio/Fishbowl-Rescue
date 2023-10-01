@@ -58,10 +58,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 3588668657584049883}
+  - {fileID: 8794114451070203809}
+  - {fileID: 4129941521665913699}
+  - {fileID: 3458011763461109991}
+  - {fileID: 1018736878698957984}
+  - {fileID: 3629439348027239673}
+  - {fileID: 4943369181887555966}
+  - {fileID: 6435573235508103749}
+  - {fileID: 4616032849082802870}
+  - {fileID: 529591889654391100}
   interactables:
   - {fileID: 8744252265689176960}
   - {fileID: 8744252265913711357}

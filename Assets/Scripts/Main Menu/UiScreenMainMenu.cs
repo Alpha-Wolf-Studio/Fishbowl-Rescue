@@ -1,9 +1,10 @@
-using System;
 using System.Collections;
+using CustomSceneSwitcher.Examples.Scripts;
 using UnityEngine;
 
 public class UiScreenMainMenu : MonoBehaviour
 {
+    [SerializeField] private ChangeSceneUI changeSceneUI;
     [SerializeField] private UiControllerMainMenu controllerMainMenu;
     [SerializeField] private UiControllerSettings controllerSettings;
     [SerializeField] private UiControllerCredits controllerCredits;
@@ -37,13 +38,8 @@ public class UiScreenMainMenu : MonoBehaviour
         controllerCredits.onCreditsCloseButtonClicked -= ControllerCredits_onCreditsCloseButtonClicked;
     }
 
-    private void ControllerMainMenu_onPlayButtonClicked ()
-    {
-        throw new NotImplementedException();
-    }
-
+    private void ControllerMainMenu_onPlayButtonClicked () => changeSceneUI.ChangeScene();
     private void ControllerMainMenu_onSettingsButtonClicked () => SwitchController(durationFade, controllerSettings.canvasGroup, controllerMainMenu.canvasGroup);
-
     private void ControllerMainMenu_onCreditsButtonClicked () => SwitchController(durationFade, controllerCredits.canvasGroup, controllerMainMenu.canvasGroup);
 
     private void ControllerMainMenu_onExitButtonClicked ()
@@ -58,7 +54,6 @@ public class UiScreenMainMenu : MonoBehaviour
     }
 
     private void ControllerCredits_onCreditsCloseButtonClicked () => SwitchController(durationFade, controllerMainMenu.canvasGroup, controllerCredits.canvasGroup);
-
     private void ControllerSettings_onSettingsCloseButtonClicked () => SwitchController(durationFade, controllerMainMenu.canvasGroup, controllerSettings.canvasGroup);
 
     private void SwitchController (float duration, CanvasGroup on, CanvasGroup off)
