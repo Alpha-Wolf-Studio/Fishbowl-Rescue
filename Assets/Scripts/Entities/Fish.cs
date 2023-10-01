@@ -20,6 +20,8 @@ public class Fish : Interactable
             return;
         GameManager.Instance.AddScore(1);
         onInteract?.Invoke(this);
+        GetComponent<BoxCollider>().enabled = false;
+        gameObject.SetActive(false);
     }
 
     public override void Activate(Transform parent)
