@@ -15,6 +15,7 @@ public class WaterTap : Interactable
         if (interactType != InteractType)
             return;
 
+        WaterManager.Instance.AddWater(10);
         onInteract?.Invoke(this);
     }
 

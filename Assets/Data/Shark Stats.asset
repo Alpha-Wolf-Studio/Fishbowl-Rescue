@@ -17,6 +17,7 @@ MonoBehaviour:
   chaseSpeed: 15
   rotationSpeed: 10
   detectionAngle: 150
-  stopDistance: 5
+  stopDistance: 30
   damage: 20
   sharkForce: 1
+  stunTime: 12
