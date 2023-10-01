@@ -15,11 +15,11 @@ MonoBehaviour:
   currentLife: 100
   maxLife: 100
   life: 100
-  forceMode: 5
+  forceMode: 0
   speedRotation: 4
-  speedForward: 160
-  speedDirections: 80
-  speedUp: 120
-  speedDown: 120
+  speedForward: 293.6
+  speedDirections: 293.6
+  speedUp: 293.6
+  speedDown: 293.6
   signX: -1
   signY: 1
