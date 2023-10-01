@@ -63,7 +63,23 @@ public class SharkStatePatrol : SharkState
 
     private void SetRandomPoint ()
     {
-        currentTarget = Random.insideUnitSphere * stats.sphereRadius;
+        bool isAvailablePoint = false;
+        int counter = 100;
+        while (!isAvailablePoint)
+        {
+            counter--;
+            if (counter < 0)
+                isAvailablePoint = true;
+            currentTarget = Random.insideUnitSphere * stats.sphereRadius;
+            if (currentTarget.y < WaterManager.Instance.WaterPosition.y)
+            {
+                if (currentTarget.y > WaterManager.Instance.MinWaterPosition.y)
+                {
+                    isAvailablePoint = true;
+                }
+            }
+        }
+
         SharkController.targetPoint.position = currentTarget;
     }
 
