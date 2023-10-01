@@ -19,17 +19,9 @@ public class SharkAttackState : SharkBaseState
 
     public override void UpdateLogic()
     {
-        float distance = Vector3.Distance(_sharkController.transform.position,currentTarget);
-
-        if (distance >= maxDistanceDelta)
-        {
-            _sharkController.transform.position =
-                Vector3.MoveTowards(_sharkController.transform.position, currentTarget, maxDistanceDelta * Time.deltaTime * _sharkController.GetPatrolSpeed() * 2);
-        }
-        else
-        {
+      
             OnPlayerAttacked.Invoke();
-        }
+        
         base.UpdateLogic();
     }
 
