@@ -79,6 +79,7 @@ public class SharkController : MonoBehaviour
 
     public void OnReceiveAttack ()
     {
-
+        ChangeStateToRunAway();
+        GameManager.Instance.AddHit();
     }
 }
