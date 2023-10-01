@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private bool canShoot;
     private Rigidbody rigidbody;
     private Vector3 finalPos;
+    float rotationZ = 0;
 
     public UnityEvent OnPlayerDeath { get; } = new UnityEvent();
     public UnityEvent OnPauseInput { get; } = new UnityEvent();
@@ -69,21 +70,32 @@ public class PlayerController : MonoBehaviour
         if (!CanMove())
             return;
 
-        if (Input.GetMouseButton(1))
+        float mouseX = Input.GetAxisRaw("Mouse X");
+        float mouseY = Input.GetAxisRaw("Mouse Y");
+        float rotationX = mouseY * playerStats.speedRotation * deltaTime * playerStats.signY;
+        float rotationY = mouseX * playerStats.speedRotation * deltaTime * playerStats.signX;
+
+        rigidbody.AddTorque(rotationX, rotationY, 0, playerStats.forceMode);
+        if (Input.GetKey(KeyCode.Q))
         {
-            float mouseX = Input.GetAxisRaw("Mouse X");
-            float mouseY = Input.GetAxisRaw("Mouse Y");
-            float rotacionX = mouseY * playerStats.speedRotation * deltaTime * playerStats.signY;
-            float rotacionY = mouseX * playerStats.speedRotation * deltaTime * playerStats.signX;
-            rigidbody.AddTorque(rotacionX, rotacionY, 0, playerStats.forceMode);
+            Vector3 rotationAngles = rigidbody.rotation.eulerAngles;
+            rotationZ = rotationAngles.z +(-1 * playerStats.speedRotationRoll * deltaTime);
+            rigidbody.MoveRotation(Quaternion.Euler(rotationAngles.x, rotationAngles.y, rotationZ));
+        }
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            Vector3 rotationAngles = rigidbody.rotation.eulerAngles;
+            rotationZ = rotationAngles.z + (1 * playerStats.speedRotationRoll * deltaTime);
+            rigidbody.MoveRotation(Quaternion.Euler(rotationAngles.x, rotationAngles.y, rotationZ));
         }
     }
 
     private void FixRotation()
     {
-        Vector3 rot = transform.rotation.eulerAngles;
-        rot.z = 0;
-        transform.rotation = Quaternion.Euler(rot);
+        //Vector3 rot = transform.rotation.eulerAngles;
+        //rot.z = 0;
+        //transform.rotation = Quaternion.Euler(rot);
     }
 
     private void IsShooting(bool state)
@@ -139,12 +151,12 @@ public class PlayerController : MonoBehaviour
 
             MarkHit(hit);
 
-            if (Input.GetKey(KeyCode.Q))
+            if (Input.GetMouseButtonDown(0))
             {
                 weaponHitter.Shoot(hit, finalPos);
             }
 
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetMouseButtonDown(1))
             {
                 weaponPicker.Shoot(hit, finalPos);
             }

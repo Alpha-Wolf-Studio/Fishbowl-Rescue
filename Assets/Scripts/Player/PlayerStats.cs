@@ -8,6 +8,7 @@ public class PlayerStats : ScriptableObject
     [Space(10)]
     public ForceMode forceMode = ForceMode.Acceleration;
     public float speedRotation = 4;
+    public float speedRotationRoll = 4;
     public float speedForward = 40;
     public float speedDirections = 20;
     public float speedUp = 30;
