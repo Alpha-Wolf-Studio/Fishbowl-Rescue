@@ -9,35 +9,114 @@ public class SharkInputController : MonoBehaviour
     [SerializeField] private PlayerController _target;
     public Action OnSharkMove;
     public Action OnSharkPatrol;
+    public Action OnSharkStun;
     public Action OnSharkAttack;
+    private bool isStuned = false;
 
-    public float GetPatrolSpeed() { return _stats.patrolSpeed; }
-    public float GetChaseSpeed() { return _stats.chaseSpeed; }
-    public float GetRotationSpeed() { return _stats.rotationSpeed; }
-    public float GetDetectionAngle() { return _stats.detectionAngle; }
-    public float GetStopDistance() { return _stats.stopDistance; }
-    public float GetSharkDamage() { return _stats.damage; }
-    public ForceMode GetSharkForce() { return _stats.sharkForce; }
-    public PlayerController GetPlayer() { return _target; }
+    private Coroutine stunCoroutine;
+
+    public float GetPatrolSpeed()
+    {
+        return _stats.patrolSpeed;
+    }
+
+    public float GetChaseSpeed()
+    {
+        return _stats.chaseSpeed;
+    }
+
+    public float GetRotationSpeed()
+    {
+        return _stats.rotationSpeed;
+    }
+
+    public float GetDetectionAngle()
+    {
+        return _stats.detectionAngle;
+    }
+
+    public float GetStopDistance()
+    {
+        return _stats.stopDistance;
+    }
+
+    public float GetSharkDamage()
+    {
+        return _stats.damage;
+    }
+
+    public float GetStunTime()
+    {
+        return _stats.stunTime;
+    }
+
+    public ForceMode GetSharkForce()
+    {
+        return _stats.sharkForce;
+    }
+
+    public PlayerController GetPlayer()
+    {
+        return _target;
+    }
+
 
     public void Update()
     {
         DebugDrawDetectionArc();
-        if (IsAtDetectionAngle()) 
+        if (IsAtDetectionAngle() && !isStuned)
+        {
             OnSharkMove.Invoke();
-        else
+        }
+        else if (!isStuned)
+        {
+            Debug.Log("Patrolling");
             OnSharkPatrol.Invoke();
+        }
     }
-    
+
+    public void Stun()
+    {
+        isStuned = true;
+
+        if (stunCoroutine != null)
+        {
+            StopCoroutine(stunCoroutine);
+        }
+        else
+        {
+            stunCoroutine = StartCoroutine(StunTime());
+        }
+    }
+
+    IEnumerator StunTime()
+    {
+        OnSharkStun.Invoke();
+        float stunTimer = 0;
+        Debug.Log("Stun");
+        isStuned = true;
+        while (stunTimer < GetStunTime())
+        {
+            stunTimer += Time.deltaTime;
+            yield return null;
+        }
+
+        isStuned = false;
+    }
+
     bool IsAtDetectionAngle()
     {
         Vector3 directionToPlayer = _target.transform.position - transform.position;
         float angulo = Vector3.Angle(_target.transform.forward, directionToPlayer);
-        
-        if (angulo < _stats.detectionAngle * 0.5) { return true; }
+
+        if (angulo < _stats.detectionAngle * 0.5)
+        {
+            return true;
+        }
+
         return false;
     }
-    
+
     void DebugDrawDetectionArc()
     {
         float detectionRadius = 20.0f;

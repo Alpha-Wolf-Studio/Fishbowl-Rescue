@@ -12,4 +12,5 @@ public class SharkStats : ScriptableObject
     public float stopDistance = 5.0f;
     public float damage = 20.0f;
     public ForceMode sharkForce = ForceMode.Impulse;
+    public float stunTime = 12.0f;
 }
