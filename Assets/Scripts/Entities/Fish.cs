@@ -6,10 +6,12 @@ public class Fish : Interactable
     public override UnityEvent<Interactable> onInteract { get; set; } = new UnityEvent<Interactable>();
     [field: SerializeField] public override InteractType InteractType { get; set; }
     private BoxCollider boxCollider;
+    private Rigidbody rigidbody;
 
     private void Awake()
     {
         boxCollider = GetComponent<BoxCollider>();
+        rigidbody = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -23,6 +25,7 @@ public class Fish : Interactable
         GameManager.Instance.AddScore(1);
         onInteract?.Invoke(this);
         boxCollider.enabled = false;
+        rigidbody.isKinematic = true;
         gameObject.SetActive(false);
     }
 
@@ -33,5 +36,6 @@ public class Fish : Interactable
         transform.position = parent.position;
         transform.up = parent.up;
         boxCollider.enabled = true;
+        rigidbody.isKinematic = false;
     }
 }

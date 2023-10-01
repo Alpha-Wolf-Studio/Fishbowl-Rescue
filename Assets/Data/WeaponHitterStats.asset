@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b1498059b124a7d8f035799d51a7f2e, type: 3}
   m_Name: WeaponHitterStats
   m_EditorClassIdentifier: 
-  range: 20
-  timeUntilTarget: 0.78
-  timeUntilComeback: 0.98
+  range: 79.23
+  timeUntilTarget: 0.51
+  timeUntilComeback: 0.25
   waitTime: 2
   cooldown: 20
