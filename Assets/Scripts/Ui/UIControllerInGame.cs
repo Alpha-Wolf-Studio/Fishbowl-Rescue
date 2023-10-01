@@ -11,12 +11,14 @@ public class UIControllerInGame : MonoBehaviour
     [SerializeField] private CanvasGroup pausedGameCanvas;
     [SerializeField] private CanvasGroup inGameCanvas;
     [SerializeField] private CanvasGroup endScreenCanvas;
+    [SerializeField] private CanvasGroup settingsCanvas;
 
     [Header("Buttons")]
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button resetButton;
     [SerializeField] private Button settingsButton;
     [SerializeField] private Button menuButton;
+    [SerializeField] private Button backButton;
     [Header("SceneChangers")]
     [SerializeField] private SceneChangeData menuSceneData;
     [SerializeField] private SceneChangeData resetSceneData;
@@ -28,6 +30,7 @@ public class UIControllerInGame : MonoBehaviour
         resetButton.onClick.AddListener(ResetScene);
         settingsButton.onClick.AddListener(TurnSettingsOn);
         menuButton.onClick.AddListener(ReturnToMenu);
+        backButton.onClick.AddListener(GoBackToPauseMenu);
     }
 
     private void OnDestroy()
@@ -36,6 +39,7 @@ public class UIControllerInGame : MonoBehaviour
         resetButton.onClick.RemoveListener(ResetScene);
         settingsButton.onClick.RemoveListener(TurnSettingsOn);
         menuButton.onClick.RemoveListener(ReturnToMenu);
+        backButton.onClick.RemoveListener(GoBackToPauseMenu);
     }
 
 
@@ -52,6 +56,7 @@ public class UIControllerInGame : MonoBehaviour
         Time.timeScale = isGamePaused ? 0 : 1;
         SetCanvasState(pausedGameCanvas, isGamePaused);
         SetCanvasState(inGameCanvas, !isGamePaused);
+        SetCanvasState(settingsCanvas, false);
     }
 
     public void SetGameOver()
@@ -59,6 +64,7 @@ public class UIControllerInGame : MonoBehaviour
         Time.timeScale = 0;
         SetCanvasState(pausedGameCanvas, false);
         SetCanvasState(inGameCanvas, false);
+        SetCanvasState(settingsCanvas, false);
         SetCanvasState(endScreenCanvas, true);
     }
 
@@ -83,6 +89,16 @@ public class UIControllerInGame : MonoBehaviour
 
     private void TurnSettingsOn()
     {
+        SetCanvasState(pausedGameCanvas, false);
+        SetCanvasState(inGameCanvas, false);
+        SetCanvasState(endScreenCanvas, false);
+        SetCanvasState(settingsCanvas, true);
+    }
+
+    private void GoBackToPauseMenu()
+    {
+        SetCanvasState(pausedGameCanvas, true);
+        SetCanvasState(settingsCanvas, false);
     }
 
     #endregion
