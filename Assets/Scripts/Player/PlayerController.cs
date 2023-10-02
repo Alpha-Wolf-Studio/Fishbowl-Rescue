@@ -75,19 +75,30 @@ public class PlayerController : MonoBehaviour
         float rotationX = mouseY * playerStats.speedRotation * deltaTime * playerStats.signY;
         float rotationY = mouseX * playerStats.speedRotation * deltaTime * playerStats.signX;
 
-        rigidbody.AddTorque(rotationX, rotationY, 0, playerStats.forceMode);
+        // rigidbody.AddTorque(rotationX, rotationY, 0, playerStats.forceMode);
+        
+        Vector3 localRotation = new Vector3(-rotationX, rotationY, 0);
+        Quaternion deltaRotation = Quaternion.Euler(localRotation);
+
+        rigidbody.MoveRotation(rigidbody.rotation * deltaRotation);
+        
+        
         if (Input.GetKey(KeyCode.Q))
         {
-            Vector3 rotationAngles = rigidbody.rotation.eulerAngles;
-            rotationZ = rotationAngles.z +(1 * playerStats.speedRotationRoll * deltaTime);
-            rigidbody.MoveRotation(Quaternion.Euler(rotationAngles.x, rotationAngles.y, rotationZ));
+             Vector3 rotationAngles = rigidbody.rotation.eulerAngles;
+             rotationZ = rotationAngles.z +(1 * playerStats.speedRotationRoll * deltaTime);
+             rigidbody.MoveRotation(Quaternion.Euler(rotationAngles.x, rotationAngles.y, rotationZ));
+            //float rotationZ = 1 * playerStats.speedRotationRoll * Time.deltaTime;
+            //rigidbody.MoveRotation(rigidbody.rotation * Quaternion.Euler(0, 0, rotationZ));
         }
 
         if (Input.GetKey(KeyCode.E))
         {
-            Vector3 rotationAngles = rigidbody.rotation.eulerAngles;
-            rotationZ = rotationAngles.z + (-1 * playerStats.speedRotationRoll * deltaTime);
-            rigidbody.MoveRotation(Quaternion.Euler(rotationAngles.x, rotationAngles.y, rotationZ));
+             Vector3 rotationAngles = rigidbody.rotation.eulerAngles;
+             rotationZ = rotationAngles.z + (-1 * playerStats.speedRotationRoll * deltaTime);
+             rigidbody.MoveRotation(Quaternion.Euler(rotationAngles.x, rotationAngles.y, rotationZ));
+           //float rotationZ = -1 * playerStats.speedRotationRoll * Time.deltaTime;
+           //rigidbody.MoveRotation(rigidbody.rotation * Quaternion.Euler(0, 0, rotationZ));
         }
     }
 

@@ -15,11 +15,12 @@ MonoBehaviour:
   currentLife: 100
   maxLife: 100
   forceMode: 0
-  speedRotation: 150
+  speedRotation: 19.66
   speedRotationRoll: 30
   speedForward: 293.6
   speedDirections: 293.6
   speedUp: 293.6
   speedDown: 293.6
-  signX: -1
+  signX: 1
   signY: 1
+  activateFishEye: 1

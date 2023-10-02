@@ -70,12 +70,12 @@ public class UiControllerSettings : MonoBehaviour
 
     private void OnToggleXClick (bool newValue)
     {
-        playerStats.signX = newValue ? 1 : -1;
+        playerStats.signX = !newValue ? 1 : -1;
     }
 
     private void OnToggleYClick (bool newValue)
     {
-        playerStats.signY = newValue ? 1 : -1;
+        playerStats.signY = !newValue ? 1 : -1;
     }
     private void OnToggleFishEye(bool newValue)
     {
