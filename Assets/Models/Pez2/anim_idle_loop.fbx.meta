@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: 19e5b9700e62c33409601d9faf69b60e
+guid: 8802dc77b83189f4b9b9c4672b145b86
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fish
+    second: {fileID: 2100000, guid: 3f926574387feed4796743738b3b661c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -33,7 +38,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: idle_loop
+      name: idle_loop2
       takeName: idle_loop
       internalID: 579492656524308521
       firstFrame: 1
@@ -117,7 +122,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 100
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0
