@@ -13,13 +13,6 @@ MonoBehaviour:
   m_Name: Shark Stats
   m_EditorClassIdentifier: 
   life: 100
-  patrolSpeed: 10
-  chaseSpeed: 15
-  stopDistance: 30
-  rotationSpeed: 10
-  damage: 20
-  sharkForce: 1
-  stunTime: 12
   layerMaskHidePlayer:
     serializedVersion: 2
     m_Bits: 512
@@ -27,9 +20,11 @@ MonoBehaviour:
   maxDistVision: 80
   minRadiusDetection: 15
   speedRotation: 2
+  damage: 20
   speedPatrolMovement: 10
   sphereRadius: 200
   detectionAngle: 150
   speedFollowMovement: 15
   speedRunMovement: 25
   distanceRun: 17
+  stunTime: 1

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static SharkState;
 
 public class SharkController : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class SharkController : MonoBehaviour
     private SharkStateRunAway sharkStateRunAway;
     private SharkStatePatrol sharkStatePatrol;
     private SharkStateFollow sharkStateFollow;
+    private SharkStateDamaged sharkStateDamaged;
     public PlayerController target;
     private SharkState currentState;
     public Vector3 targetPosition => target.transform.position;
@@ -22,10 +24,12 @@ public class SharkController : MonoBehaviour
         sharkStateRunAway = GetComponent<SharkStateRunAway>();
         sharkStatePatrol = GetComponent<SharkStatePatrol>();
         sharkStateFollow = GetComponent<SharkStateFollow>();
+        sharkStateDamaged = GetComponent<SharkStateDamaged>();
 
         stats.Add(sharkStateRunAway);
         stats.Add(sharkStatePatrol);
         stats.Add(sharkStateFollow);
+        stats.Add(sharkStateDamaged);
 
         for (int i = 0; i < stats.Count; i++)
         {
@@ -81,9 +85,19 @@ public class SharkController : MonoBehaviour
         onPlayerFound?.Invoke();
     }
 
+    public void ChangeStateToDamaged ()
+    {
+        isFocus = false;
+        currentState.OnExitState();
+        currentState = sharkStateDamaged;
+        currentState.OnEnterState();
+
+        onPlayerFound?.Invoke();
+    }
+
     public void OnReceiveAttack ()
     {
-        ChangeStateToRunAway();
+        ChangeStateToDamaged();
         GameManager.Instance.AddHit();
     }
 }

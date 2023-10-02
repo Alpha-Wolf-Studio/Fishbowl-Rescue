@@ -21,7 +21,10 @@ public class SharkStats : ScriptableObject
     [Header("Follow")]
     public float speedFollowMovement = 15;
 
-    [Header("Follow")]
+    [Header("Run Away")]
     public float speedRunMovement = 25;
     public float distanceRun = 35;
+
+    [Header("Damaged")]
+    public float stunTime = 2;
 }

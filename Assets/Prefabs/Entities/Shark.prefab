@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7413533866053063212}
   - component: {fileID: 7413533866053063215}
   - component: {fileID: 7413533866053063214}
+  - component: {fileID: 180875365829853267}
   - component: {fileID: 1397454299}
   m_Layer: 8
   m_Name: Shark
@@ -51,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <InteractType>k__BackingField: 0
-  SharkController: {fileID: 0}
+  SharkController: {fileID: 7413533866053063213}
 --- !u!114 &7413533866053063213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,6 +109,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SharkController: {fileID: 0}
+--- !u!114 &180875365829853267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7413533866053063201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2007a5e5c44fb6438b0d79935ae2d85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SharkController: {fileID: 0}
+  currentTime: 0
 --- !u!65 &1397454299
 BoxCollider:
   m_ObjectHideFlags: 0
