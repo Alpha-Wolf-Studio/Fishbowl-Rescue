@@ -1,9 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 public abstract class Weapon : MonoBehaviour
 {
@@ -55,7 +58,11 @@ public abstract class Weapon : MonoBehaviour
         }
     }
 
-    public abstract void EndAction(Collider collider1);
+    public virtual void EndAction(Collider collider1)
+    {
+        hook.transform.localPosition = Vector3.zero;
+        hook.transform.localRotation = Quaternion.identity;
+    }
 
     IEnumerator MoveUpToTarget(Vector3 hitPoint, Collider collider = null)
     {
@@ -125,7 +132,7 @@ public abstract class Weapon : MonoBehaviour
 
         hook.transform.SetParent(hookPos);
         hook.transform.localPosition = Vector3.zero;
-        hook.transform.rotation = Quaternion.identity;
+        hook.transform.localRotation = Quaternion.identity;
         moveToTarget = null;
         IsWeaponActive.Invoke(false);
         EndAction(collider);
