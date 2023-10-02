@@ -12,9 +12,8 @@ public abstract class Weapon : MonoBehaviour
 {
     [SerializeField] public PlayerWeaponHitterStats playerHitterStats;
     [SerializeField] protected List<InteractType> interactType = new List<InteractType>();
-    [SerializeField] protected GameObject hook;
-    [FormerlySerializedAs("hookRope")] [SerializeField]
-    protected GameObject rope;
+    [SerializeField] protected GameObject hook; 
+    [SerializeField] protected GameObject rope;
     [SerializeField] protected Transform hookPos;
     public UnityEvent<bool> IsWeaponActive { get; } = new UnityEvent<bool>();
     private Coroutine moveToTarget;
@@ -24,6 +23,7 @@ public abstract class Weapon : MonoBehaviour
 
     public void Awake()
     {
+        rope.SetActive(false);
     }
 
     public void Shoot(RaycastHit hit, Vector3 finalPos)
@@ -62,13 +62,17 @@ public abstract class Weapon : MonoBehaviour
     {
         hook.transform.localPosition = Vector3.zero;
         hook.transform.localRotation = Quaternion.identity;
+        rope.SetActive(false);
+        
     }
 
     IEnumerator MoveUpToTarget(Vector3 hitPoint, Collider collider = null)
     {
+        
         Vector3 initialPos = hook.transform.position;
         float maxDuration = playerHitterStats.timeUntilTarget;
 
+        rope.SetActive(true);
         rope.transform.LookAt(hitPoint);
         float initialScaleZ = rope.transform.localScale.z;
 

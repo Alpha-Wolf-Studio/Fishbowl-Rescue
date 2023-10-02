@@ -9,5 +9,8 @@ public class WeaponHitter : Weapon
             shark.OnReceiveAttack();
     }
 
-    public override void EndAction (Collider collider1) { }
+    public override void EndAction (Collider collider1)
+    {
+        base.EndAction(collider1);
+    }
 }

@@ -30,5 +30,6 @@ public class WeaponPicker : Weapon
             interactable.OnInteract(global::InteractType.Pick);
             collider1.transform.SetParent(null);
         }
+        base.EndAction(collider1);
     }
 }
