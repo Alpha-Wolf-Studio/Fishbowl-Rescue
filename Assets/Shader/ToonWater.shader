@@ -127,6 +127,8 @@
 				// depth, in Unity units.
 				float existingDepthLinear = LinearEyeDepth(existingDepth01);
 
+            	
+
 				// Difference, in Unity units, between the water's surface and the object behind it.
 				float depthDifference = existingDepthLinear - i.screenPosition.w;
 
