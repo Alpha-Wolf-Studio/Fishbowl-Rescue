@@ -15,6 +15,7 @@ public class AlarmLight : MonoBehaviour
             if (GameManager.Instance.Sharks[i].SharkController.isFocus)
             {
                 isAlarmOn = true;
+                break;
             }
         }
 
@@ -22,6 +23,8 @@ public class AlarmLight : MonoBehaviour
         {
             if (!lastStateAlarmOn)
             {
+                Debug.Log("Enable Alarm");
+                lastStateAlarmOn = true;
                 SetAlarm(true);
             }
         }
@@ -29,12 +32,13 @@ public class AlarmLight : MonoBehaviour
         {
             if (lastStateAlarmOn)
             {
+                Debug.Log("Disable Alarm");
                 SetAlarm(false);
+                lastStateAlarmOn = false;
             }
         }
 
         transform.Rotate(Vector3.up * (speed * Time.deltaTime));
-        isAlarmOn = lastStateAlarmOn;
     }
 
     void SetAlarm (bool state)
