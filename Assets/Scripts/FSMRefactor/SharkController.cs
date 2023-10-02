@@ -15,6 +15,7 @@ public class SharkController : MonoBehaviour
     public Vector3 targetPosition => target.transform.position;
     public Transform targetPoint;
     public SharkStats SharkStats;
+    public bool isFocus;
 
     private void Awake ()
     {
@@ -52,6 +53,7 @@ public class SharkController : MonoBehaviour
 
     public void ChangeStateToPatrol ()
     {
+        isFocus = false;
         currentState.OnExitState();
         currentState = sharkStatePatrol;
         currentState.OnEnterState();
@@ -61,6 +63,7 @@ public class SharkController : MonoBehaviour
 
     public void ChangeStateToFollow ()
     {
+        isFocus = true;
         currentState.OnExitState();
         currentState = sharkStateFollow;
         currentState.OnEnterState();
@@ -70,6 +73,7 @@ public class SharkController : MonoBehaviour
 
     public void ChangeStateToRunAway ()
     {
+        isFocus = false;
         currentState.OnExitState();
         currentState = sharkStateRunAway;
         currentState.OnEnterState();
