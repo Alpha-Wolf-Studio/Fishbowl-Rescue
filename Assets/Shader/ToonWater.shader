@@ -48,7 +48,7 @@
 			Blend SrcAlpha OneMinusSrcAlpha
 			ZWrite Off
 
-            CGPROGRAM
+            HLSLPROGRAM
 			#define SMOOTHSTEP_AA 0.01
 
             #pragma vertex vert
@@ -67,7 +67,7 @@
 				return float4(color, alpha);
 			}
 
-            struct appdata
+            struct appdata_t
             {
                 float4 vertex : POSITION;
 				float4 uv : TEXCOORD0;
@@ -82,6 +82,7 @@
 				float4 screenPosition : TEXCOORD2;
 				float3 viewNormal : NORMAL;
             };
+			
 
 			sampler2D _SurfaceNoise;
 			float4 _SurfaceNoise_ST;
@@ -89,7 +90,7 @@
 			sampler2D _SurfaceDistortion;
 			float4 _SurfaceDistortion_ST;
 
-            v2f vert (appdata v)
+            v2f vert (appdata_t v)
             {
                 v2f o;
 
@@ -157,8 +158,8 @@
 
 				// Use smoothstep to ensure we get some anti-aliasing in the transition from foam to surface.
 				// Uncomment the line below to see how it looks without AA.
-				// float surfaceNoise = surfaceNoiseSample > surfaceNoiseCutoff ? 1 : 0;
-				float surfaceNoise = smoothstep(surfaceNoiseCutoff - SMOOTHSTEP_AA, surfaceNoiseCutoff + SMOOTHSTEP_AA, surfaceNoiseSample);
+				 float surfaceNoise = surfaceNoiseSample > surfaceNoiseCutoff ? 1 : 0;
+				//float surfaceNoise = smoothstep(surfaceNoiseCutoff - SMOOTHSTEP_AA, surfaceNoiseCutoff + SMOOTHSTEP_AA, surfaceNoiseSample);
 
 				float4 surfaceNoiseColor = _FoamColor;
 				surfaceNoiseColor.a *= surfaceNoise;
@@ -166,7 +167,7 @@
 				// Use normal alpha blending to combine the foam with the surface.
 				return alphaBlend(surfaceNoiseColor, waterColor);
             }
-            ENDCG
+            ENDHLSL
         }
     }
 }

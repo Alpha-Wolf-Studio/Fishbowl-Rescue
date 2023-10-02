@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 finalPos;
     float rotationZ = 0;
 
+    private bool canPlayerMove = true;
     public UnityEvent OnPlayerDeath { get; } = new UnityEvent();
     public UnityEvent OnPauseInput { get; } = new UnityEvent();
     public PlayerStats PlayerStats => playerStats;
@@ -156,6 +157,8 @@ public class PlayerController : MonoBehaviour
 
     private void WeaponsAction(float deltaTime)
     {
+        if (!CanMove())
+            return;
         if (canShoot)
         {
             CalculateShootEndPosition(out RaycastHit hit);
@@ -219,9 +222,10 @@ public class PlayerController : MonoBehaviour
         playerStats.currentLife -= damage;
         if (playerStats.currentLife < 1)
         {
+            canPlayerMove = false;
             OnPlayerDeath.Invoke();
         }
     }
 
-    private bool CanMove() => true;
+    private bool CanMove() => canPlayerMove;
 }

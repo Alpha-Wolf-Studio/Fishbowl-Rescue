@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     public int SharkHits { get; private set; } = 0;
     [SerializeField] private PlayerController player;
     [SerializeField] private UIControllerInGame uiController;
+    [SerializeField] private WaterManager waterManager;
     private bool isPaused;
 
     protected override void OnAwaken()
@@ -19,11 +20,15 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         Cursor.lockState = CursorLockMode.Locked;
         bool isPaused = false;
         player.OnPauseInput.AddListener(TogglePause); 
+        player.OnPlayerDeath.AddListener(GameOver); 
         uiController.OnPausedGame.AddListener(TogglePause); 
+        waterManager.OnWaterEnded.AddListener(GameOver);
     }
 
     protected override void OnDestroyed()
     {
+        waterManager.OnWaterEnded.RemoveAllListeners();
+        player.OnPlayerDeath.RemoveAllListeners();
         player.OnPauseInput.RemoveListener(TogglePause);
         uiController.OnPausedGame.RemoveListener(TogglePause); 
     }
@@ -46,5 +51,9 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
         isPaused = !isPaused;
         Cursor.lockState = isPaused ? CursorLockMode.None : CursorLockMode.Locked;
         uiController.SetPauseMenu(isPaused);
+    }
+    private void GameOver()
+    {
+        uiController.SetGameOver();
     }
 }

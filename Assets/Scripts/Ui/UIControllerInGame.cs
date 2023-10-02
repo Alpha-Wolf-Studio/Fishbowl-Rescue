@@ -22,6 +22,8 @@ public class UIControllerInGame : MonoBehaviour
     [Header("SceneChangers")]
     [SerializeField] private SceneChangeData menuSceneData;
     [SerializeField] private SceneChangeData resetSceneData;
+    [Header("Values")]
+    [SerializeField] private float valueBeforeGoingBackToMenu = 3f;
     public UnityEvent OnPausedGame { get; } = new UnityEvent();
 
     private void Awake()
@@ -61,11 +63,12 @@ public class UIControllerInGame : MonoBehaviour
 
     public void SetGameOver()
     {
-        Time.timeScale = 0;
+        Time.timeScale = 1;
         SetCanvasState(pausedGameCanvas, false);
         SetCanvasState(inGameCanvas, false);
         SetCanvasState(settingsCanvas, false);
         SetCanvasState(endScreenCanvas, true);
+        Invoke(nameof(ReturnToMenu), valueBeforeGoingBackToMenu);
     }
 
     #region Buttons
