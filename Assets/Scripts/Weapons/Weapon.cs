@@ -1,12 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
-using Quaternion = UnityEngine.Quaternion;
-using Vector3 = UnityEngine.Vector3;
 
 public abstract class Weapon : MonoBehaviour
 {
@@ -15,19 +11,26 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected GameObject hook; 
     [SerializeField] protected GameObject rope;
     [SerializeField] protected Transform hookPos;
+    protected AudioSource audioSource;
+    [SerializeField] protected AudioClip clipImpact;
+    [SerializeField] protected AudioClip clipShoot;
+    [SerializeField] protected AudioClip clipReloaded;
+
     public UnityEvent<bool> IsWeaponActive { get; } = new UnityEvent<bool>();
     private Coroutine moveToTarget;
     public List<InteractType> InteractType => interactType;
 
-
-
     public void Awake()
     {
         rope.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void Shoot(RaycastHit hit, Vector3 finalPos)
     {
+        audioSource.clip = clipShoot;
+        audioSource.Play();
+
         if (moveToTarget != null)
         {
             StopCoroutine(nameof(MoveUpToTarget));
@@ -51,6 +54,9 @@ public abstract class Weapon : MonoBehaviour
 
     public virtual void StartAction(Collider collider)
     {
+        audioSource.clip = clipImpact;
+        audioSource.Play();
+
         if (collider && collider.TryGetComponent<Interactable>(out Interactable interact) &&
             interact.InteractType == global::InteractType.Push)
         {
@@ -58,12 +64,13 @@ public abstract class Weapon : MonoBehaviour
         }
     }
 
-    public virtual void EndAction(Collider collider1)
+    public virtual void EndAction (Collider collider1)
     {
         hook.transform.localPosition = Vector3.zero;
         hook.transform.localRotation = Quaternion.identity;
         rope.SetActive(false);
-        
+        audioSource.clip = clipReloaded;
+        audioSource.Play();
     }
 
     IEnumerator MoveUpToTarget(Vector3 hitPoint, Collider collider = null)

@@ -14,6 +14,7 @@ public class SharkController : MonoBehaviour
     private SharkStateDamaged sharkStateDamaged;
     public PlayerController target;
     private SharkState currentState;
+    private AudioSource audioSource;
     public Vector3 targetPosition => target.transform.position;
     public Transform targetPoint;
     public SharkStats SharkStats;
@@ -25,6 +26,7 @@ public class SharkController : MonoBehaviour
         sharkStatePatrol = GetComponent<SharkStatePatrol>();
         sharkStateFollow = GetComponent<SharkStateFollow>();
         sharkStateDamaged = GetComponent<SharkStateDamaged>();
+        audioSource = GetComponent<AudioSource>();
 
         stats.Add(sharkStateRunAway);
         stats.Add(sharkStatePatrol);
@@ -58,6 +60,7 @@ public class SharkController : MonoBehaviour
     public void ChangeStateToPatrol ()
     {
         isFocus = false;
+        audioSource.Stop();
         currentState.OnExitState();
         currentState = sharkStatePatrol;
         currentState.OnEnterState();
@@ -68,6 +71,7 @@ public class SharkController : MonoBehaviour
     public void ChangeStateToFollow ()
     {
         isFocus = true;
+        audioSource.Play();
         currentState.OnExitState();
         currentState = sharkStateFollow;
         currentState.OnEnterState();
@@ -78,6 +82,7 @@ public class SharkController : MonoBehaviour
     public void ChangeStateToRunAway ()
     {
         isFocus = false;
+        audioSource.Stop();
         currentState.OnExitState();
         currentState = sharkStateRunAway;
         currentState.OnEnterState();
@@ -88,6 +93,7 @@ public class SharkController : MonoBehaviour
     public void ChangeStateToDamaged ()
     {
         isFocus = false;
+        audioSource.Stop();
         currentState.OnExitState();
         currentState = sharkStateDamaged;
         currentState.OnEnterState();

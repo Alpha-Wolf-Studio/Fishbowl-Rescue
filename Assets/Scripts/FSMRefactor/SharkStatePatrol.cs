@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SharkStatePatrol : SharkState
@@ -56,7 +57,12 @@ public class SharkStatePatrol : SharkState
         float distance = Vector3.Distance(SharkController.targetPosition, transform.position);
 
         if (angle < stats.detectionAngle * 0.5 && distance < stats.maxDistVision)
-            return true;
+        {
+            if (!Physics.Raycast(transform.position, transform.forward, distance, stats.layerMaskHidePlayer))
+            {
+                return true;
+            }
+        }
 
         return false;
     }
@@ -64,18 +70,27 @@ public class SharkStatePatrol : SharkState
     private void SetRandomPoint ()
     {
         bool isAvailablePoint = false;
-        int counter = 100;
+        int counter = 500;
+
         while (!isAvailablePoint)
         {
             counter--;
             if (counter < 0)
+            {
                 isAvailablePoint = true;
+                Debug.LogWarning("Punto no encontrado, seteado uno random");
+            }
+
             currentTarget = Random.insideUnitSphere * stats.sphereRadius;
             if (currentTarget.y < WaterManager.Instance.WaterPosition.y)
             {
                 if (currentTarget.y > WaterManager.Instance.MinWaterPosition.y)
                 {
-                    isAvailablePoint = true;
+                    float distance = Vector3.Distance(transform.position, currentTarget);
+                    //if (!Physics.Raycast(transform.position, transform.forward, distance, stats.layerMaskHidePlayer))
+                    {
+                        isAvailablePoint = true;
+                    }
                 }
             }
         }
