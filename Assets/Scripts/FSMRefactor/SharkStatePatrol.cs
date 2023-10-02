@@ -43,6 +43,14 @@ public class SharkStatePatrol : SharkState
             //StartRotationToPoint();
         }
 
+        if (currentTarget.y < WaterManager.Instance.WaterPosition.y)
+        {
+            if (currentTarget.y > WaterManager.Instance.MinWaterPosition.y)
+            {
+                SetRandomPoint();
+            }
+        }
+
         if (TryFindPlayer())
         {
             SharkController.ChangeStateToFollow();
@@ -87,7 +95,7 @@ public class SharkStatePatrol : SharkState
                 if (currentTarget.y > WaterManager.Instance.MinWaterPosition.y)
                 {
                     float distance = Vector3.Distance(transform.position, currentTarget);
-                    //if (!Physics.Raycast(transform.position, transform.forward, distance, stats.layerMaskHidePlayer))
+                    if (!Physics.Raycast(transform.position, transform.forward, distance, stats.layerMaskHidePlayer))
                     {
                         isAvailablePoint = true;
                     }
