@@ -45,6 +45,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff2128bfaf2b9744adb58fe86fbfa30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  listParts:
+  - {fileID: 8853425853337869802}
+  - {fileID: 8318780207899833191}
+  - {fileID: 1883423331246979322}
+  - {fileID: 1747360330663659130}
+  - {fileID: 4550250263231495759}
+  - {fileID: 4787482689102107521}
+  - {fileID: 5947310263209078822}
+  minParts: 3
+  maxParts: 6
 --- !u!1001 &7222131450908916681
 PrefabInstance:
   m_ObjectHideFlags: 0
