@@ -1,7 +1,12 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviourSingleton<GameManager>
 {
+    [SerializeField] private List<Shark> sharks = new List<Shark>();
+    public List<Shark> Sharks => sharks;
+
     public float currentTime;
     public int FishCount { get; private set; } = 0;
     public int SharkHits { get; private set; } = 0;

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -5,6 +6,12 @@ public class Shark : Interactable
 {
     public override UnityEvent<Interactable> onInteract { get; set; } = new UnityEvent<Interactable>();
     [field: SerializeField] public override InteractType InteractType { get; set; }
+    public SharkController SharkController;
+
+    private void Awake ()
+    {
+        SharkController = GetComponent<SharkController>();
+    }
 
     private void Start () { }
 
