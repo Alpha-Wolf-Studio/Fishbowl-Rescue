@@ -2558,7 +2558,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'GD
+  m_text: 'Game Design
 
     Goran Blazevich
 
@@ -3117,7 +3117,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Art\nJuan Brutti\nRocio Gim\xE9nez\nSantiago Lafosse\nLautaro Lajmanovich\nFrancisco
+  m_text: "Artists\nJuan Brutti\nRocio Gim\xE9nez\nSantiago Lafosse\nLautaro Lajmanovich\nFrancisco
     Sanche"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 84a60b4404d27fb45b352ea41f26925a, type: 2}
@@ -4072,7 +4072,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Dev
+  m_text: 'Developers
 
     Ignacio Arrastua
 
@@ -4163,7 +4163,15 @@ PrefabInstance:
     m_TransformParent: {fileID: 1092060068}
     m_Modifications:
     - target: {fileID: 7428108175062010, guid: 4f489f0866aad954d8ae08a9e910aa64, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7428108175062010, guid: 4f489f0866aad954d8ae08a9e910aa64, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7428108175062010, guid: 4f489f0866aad954d8ae08a9e910aa64, type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 230409182123306834, guid: 4f489f0866aad954d8ae08a9e910aa64, type: 3}
@@ -4171,7 +4179,15 @@ PrefabInstance:
       value: -250
       objectReference: {fileID: 0}
     - target: {fileID: 242421848400115263, guid: 4f489f0866aad954d8ae08a9e910aa64, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 242421848400115263, guid: 4f489f0866aad954d8ae08a9e910aa64, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843884764894526114, guid: 4f489f0866aad954d8ae08a9e910aa64, type: 3}
+      propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1843884764894526114, guid: 4f489f0866aad954d8ae08a9e910aa64, type: 3}
@@ -4179,11 +4195,27 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1966662241160979720, guid: 4f489f0866aad954d8ae08a9e910aa64, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966662241160979720, guid: 4f489f0866aad954d8ae08a9e910aa64, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966662241160979720, guid: 4f489f0866aad954d8ae08a9e910aa64, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4108578000664872804, guid: 4f489f0866aad954d8ae08a9e910aa64, type: 3}
+      propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4108578000664872804, guid: 4f489f0866aad954d8ae08a9e910aa64, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4108578000664872804, guid: 4f489f0866aad954d8ae08a9e910aa64, type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4349078247065738113, guid: 4f489f0866aad954d8ae08a9e910aa64, type: 3}
@@ -4200,6 +4232,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6110970939134784898, guid: 4f489f0866aad954d8ae08a9e910aa64, type: 3}
       propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7382868205526993996, guid: 4f489f0866aad954d8ae08a9e910aa64, type: 3}
+      propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7382868205526993996, guid: 4f489f0866aad954d8ae08a9e910aa64, type: 3}

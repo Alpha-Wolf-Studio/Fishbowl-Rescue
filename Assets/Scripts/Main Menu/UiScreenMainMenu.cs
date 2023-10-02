@@ -30,7 +30,7 @@ public class UiScreenMainMenu : MonoBehaviour
 
     private void Start ()
     {
-        CustomPlayFabSingleton.Instance.OnLoginResult += Instance_OnLoginResult;
+        CustomPlayFabSingleton.Instance.OnClientDataGetResult += Instance_OnLoginResult;
         SetPanel(controllerMainMenu.canvasGroup, true);
         SetPanel(controllerSettings.canvasGroup, false);
         SetPanel(controllerCredits.canvasGroup, false);
@@ -43,18 +43,27 @@ public class UiScreenMainMenu : MonoBehaviour
             stateLoaded = 2;
             textFishes.text = CustomPlayFabSingleton.Instance.UserData.SharkHits.ToString();
             textShark.text = CustomPlayFabSingleton.Instance.UserData.FishesCapture.ToString();
-            textTime.text = CustomPlayFabSingleton.Instance.UserData.TimePlayed.ToString();
+            textTime.text = ConvertSecondsToTimer(CustomPlayFabSingleton.Instance.UserData.TimePlayed);
         }
     }
 
     private void OnDestroy ()
     {
-        CustomPlayFabSingleton.Instance.OnLoginResult -= Instance_OnLoginResult;
+        CustomPlayFabSingleton.Instance.OnClientDataGetResult -= Instance_OnLoginResult;
         controllerMainMenu.onPlayButtonClicked -= ControllerMainMenu_onPlayButtonClicked;
         controllerMainMenu.onSettingsButtonClicked -= ControllerMainMenu_onSettingsButtonClicked;
         controllerMainMenu.onCreditsButtonClicked -= ControllerMainMenu_onCreditsButtonClicked;
         controllerSettings.onSettingsCloseButtonClicked -= ControllerSettings_onSettingsCloseButtonClicked;
         controllerCredits.onCreditsCloseButtonClicked -= ControllerCredits_onCreditsCloseButtonClicked;
+    }
+
+    private string ConvertSecondsToTimer(float time)
+    {
+        float minutes = time / 60;
+        float seconds = time % 60;
+        string mins = minutes < 10 ? $"0{minutes:F0}" : minutes.ToString("F0");
+        string secs = seconds < 10 ? $"0{seconds:F0}" : seconds.ToString("F0");
+        return $"{mins}:{secs}";
     }
 
     private void Instance_OnLoginResult(bool isLoaded)
