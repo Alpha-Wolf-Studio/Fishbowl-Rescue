@@ -1,6 +1,8 @@
 using System.Collections;
+using CustomPlayFabAPI;
 using CustomSceneSwitcher.Examples.Scripts;
 using UnityEngine;
+using TMPro;
 
 public class UiScreenMainMenu : MonoBehaviour
 {
@@ -10,8 +12,12 @@ public class UiScreenMainMenu : MonoBehaviour
     [SerializeField] private UiControllerCredits controllerCredits;
     [SerializeField] private AnimationCurve animationCurve;
     [SerializeField] private float durationFade = 1.0f;
+    [SerializeField] private TMP_Text textFishes;
+    [SerializeField] private TMP_Text textShark;
+    [SerializeField] private TMP_Text textTime;
 
     private IEnumerator switchPanel;
+    private int stateLoaded = 0;
 
     private void Awake ()
     {
@@ -24,18 +30,39 @@ public class UiScreenMainMenu : MonoBehaviour
 
     private void Start ()
     {
+        CustomPlayFabSingleton.Instance.OnLoginResult += Instance_OnLoginResult;
         SetPanel(controllerMainMenu.canvasGroup, true);
         SetPanel(controllerSettings.canvasGroup, false);
         SetPanel(controllerCredits.canvasGroup, false);
     }
 
+    private void Update ()
+    {
+        if (stateLoaded == 1)
+        {
+            stateLoaded = 2;
+            textFishes.text = CustomPlayFabSingleton.Instance.UserData.SharkHits.ToString();
+            textShark.text = CustomPlayFabSingleton.Instance.UserData.FishesCapture.ToString();
+            textTime.text = CustomPlayFabSingleton.Instance.UserData.TimePlayed.ToString();
+        }
+    }
+
     private void OnDestroy ()
     {
+        CustomPlayFabSingleton.Instance.OnLoginResult -= Instance_OnLoginResult;
         controllerMainMenu.onPlayButtonClicked -= ControllerMainMenu_onPlayButtonClicked;
         controllerMainMenu.onSettingsButtonClicked -= ControllerMainMenu_onSettingsButtonClicked;
         controllerMainMenu.onCreditsButtonClicked -= ControllerMainMenu_onCreditsButtonClicked;
         controllerSettings.onSettingsCloseButtonClicked -= ControllerSettings_onSettingsCloseButtonClicked;
         controllerCredits.onCreditsCloseButtonClicked -= ControllerCredits_onCreditsCloseButtonClicked;
+    }
+
+    private void Instance_OnLoginResult(bool isLoaded)
+    {
+        if (isLoaded)
+        {
+            stateLoaded = 1;
+        }
     }
 
     private void ControllerMainMenu_onPlayButtonClicked () => changeSceneUI.ChangeScene();

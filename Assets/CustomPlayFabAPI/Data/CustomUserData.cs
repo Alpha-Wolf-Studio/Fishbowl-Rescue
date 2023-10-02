@@ -6,8 +6,8 @@ namespace CustomPlayFabAPI.Data
     {
         private const string LoginAmountKey = "LOGIN_AMOUNT"; 
         private const string TimePlayedKey = "TIME_PLAYED";
-        private const string Item1Key = "ITEM1KEY";
-        private const string Item2Key = "ITEM2KEY";
+        private const string SharkHitsKey = "SHARKS_HIT";
+        private const string FishesCaptureKey = "FISHES_CAPTURE";
         private const string Item3Key = "ITEM3KEY";
         private const string Item4Key = "ITEM4KEY";
         
@@ -15,14 +15,26 @@ namespace CustomPlayFabAPI.Data
 
         public int TimePlayed { get; private set; } = 0;
         public int LoginAmount { get; private set; } = 0;
-        public float Item1Amount { get; private set; } = 0;
-        public bool Item2Amount { get; private set; } = false;
+        public int SharkHits { get; private set; } = 0;
+        public int FishesCapture { get; private set; } = 0;
         public int Item3Amount { get; private set; } = 0;
         public int Item4Amount { get; private set; } = 0;
 
         public void AddToLogInCounter() => LoginAmount++;
         public void AddTimePlayed(int time) => TimePlayed += time;
-        
+
+        public void SetSharkHits (int newValue)
+        {
+            if (SharkHits < newValue)
+                SharkHits = newValue;
+        }
+
+        public void SetFishesCapture (int newValue)
+        {
+            if (FishesCapture < newValue)
+                FishesCapture = newValue;
+        }
+
         public void ParseDataFromDictionary(Dictionary<string, string> userData)
         {
             if (userData.TryGetValue(TimePlayedKey, out string valueTime))
@@ -31,12 +43,12 @@ namespace CustomPlayFabAPI.Data
             if(userData.TryGetValue(LoginAmountKey, out string valueLogin))
                 LoginAmount = int.Parse(valueLogin);
 
-            //if(userData.TryGetValue(Item1Key, out string valueItem1))
-            //    Item1Amount = float.Parse(valueItem1);
-            //
-            //if(userData.TryGetValue(Item2Key, out string valueItem2))
-            //    Item2Amount = bool.Parse(valueItem2);
-            //
+            if(userData.TryGetValue(SharkHitsKey, out string valueItem1))
+                SharkHits = int.Parse(valueItem1);
+            
+            if(userData.TryGetValue(FishesCaptureKey, out string valueItem2))
+                FishesCapture = int.Parse(valueItem2);
+            
             //if(userData.TryGetValue(Item3Key, out string valueItem3))
             //    Item3Amount = int.Parse(valueItem3);
             //
@@ -49,9 +61,9 @@ namespace CustomPlayFabAPI.Data
             FullDataDictionary = new Dictionary<string, string>
             {
                 { LoginAmountKey, LoginAmount.ToString() },
-                { TimePlayedKey, TimePlayed.ToString() }//,
-                //{ Item1Key, Item1Amount.ToString("F2") },
-                //{ Item2Key, Item2Amount.ToString() },
+                { TimePlayedKey, TimePlayed.ToString() },
+                { SharkHitsKey, SharkHits.ToString() },
+                { FishesCaptureKey, FishesCapture.ToString() }
                 //{ Item3Key, Item3Amount.ToString() },
                 //{ Item4Key, Item4Amount.ToString() }
             };

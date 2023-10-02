@@ -1,3 +1,4 @@
+using CustomPlayFabAPI;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
 
     protected override void OnDestroyed()
     {
+        SaveData();
         waterManager.OnWaterEnded.RemoveAllListeners();
         player.OnPlayerDeath.RemoveAllListeners();
         player.OnPauseInput.RemoveListener(TogglePause);
@@ -55,5 +57,11 @@ public class GameManager : MonoBehaviourSingleton<GameManager>
     private void GameOver()
     {
         uiController.SetGameOver();
+    }
+    public void SaveData()
+    {
+        CustomPlayFabSingleton.Instance.UserData.SetFishesCapture(FishCount);
+        CustomPlayFabSingleton.Instance.UserData.SetSharkHits(SharkHits);
+        CustomPlayFabSingleton.Instance.UserData.AddTimePlayed((int)currentTime);
     }
 }

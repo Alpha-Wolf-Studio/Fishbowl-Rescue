@@ -1,3 +1,4 @@
+using CustomPlayFabAPI;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
@@ -41,7 +42,22 @@ public class UiControllerMainMenu : MonoBehaviour
     private void OnPlayButtonClicked() => onPlayButtonClicked?.Invoke();
     private void OnSettingsButtonClicked() => onSettingsButtonClicked?.Invoke();
     private void OnCreditsButtonClicked() => onCreditsButtonClicked?.Invoke();
-    private void OnGame1ButtonClicked() => Application.OpenURL("");
-    private void OnGame2ButtonClicked() => Application.OpenURL("");
-    private void OnGame3ButtonClicked() => Application.OpenURL("");
+
+    private void OnGame1ButtonClicked ()
+    {
+        Debug.Log("Click 1");
+        Application.OpenURL("");
+    }
+
+    private void OnGame2ButtonClicked ()
+    {
+        Debug.Log("Click 2");
+        Application.OpenURL("");
+    }
+
+    private void OnGame3ButtonClicked ()
+    {
+        Debug.Log("Click 3");
+        Application.OpenURL("");
+    }
 }
