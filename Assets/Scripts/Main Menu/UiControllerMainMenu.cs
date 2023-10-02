@@ -46,7 +46,7 @@ public class UiControllerMainMenu : MonoBehaviour
     private void OnGame1ButtonClicked ()
     {
         Debug.Log("Click 1");
-        Application.OpenURL("");
+        Application.OpenURL("https://ldjam.com/events/ludum-dare/54/$371816");
     }
 
     private void OnGame2ButtonClicked ()
@@ -58,6 +58,6 @@ public class UiControllerMainMenu : MonoBehaviour
     private void OnGame3ButtonClicked ()
     {
         Debug.Log("Click 3");
-        Application.OpenURL("");
+        Application.OpenURL("https://ldjam.com/events/ludum-dare/54/$371819");
     }
 }
