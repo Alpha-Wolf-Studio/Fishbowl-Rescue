@@ -6,6 +6,7 @@ public class SharkStateRunAway : SharkState
     private SharkStats stats => SharkController.SharkStats;
     private Vector3 currentTarget;
     private IEnumerator lookAtPoint;
+    private float delay = 2;
 
     public override void OnEnterState ()
     {
