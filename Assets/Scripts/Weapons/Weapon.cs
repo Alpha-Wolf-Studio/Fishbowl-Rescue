@@ -28,11 +28,11 @@ public abstract class Weapon : MonoBehaviour
         if (moveToTarget != null)
         {
             StopCoroutine(nameof(MoveUpToTarget));
-            Debug.Log("Already Shooting");
+            //Debug.Log("Already Shooting");
         }
         else
         {
-            Debug.Log("Start");
+            //Debug.Log("Start");
             IsWeaponActive.Invoke(true);
             if (hit.collider)
             {
@@ -40,7 +40,7 @@ public abstract class Weapon : MonoBehaviour
             }
             else
             {
-                Debug.Log(finalPos);
+                //Debug.Log(finalPos);
                 moveToTarget = StartCoroutine(MoveUpToTarget(finalPos));
             }
         }

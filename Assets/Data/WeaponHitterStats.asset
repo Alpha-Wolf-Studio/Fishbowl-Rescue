@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 79.23
   timeUntilTarget: 0.51
-  timeUntilComeback: 0.25
-  waitTime: 2
+  timeUntilComeback: 0.1
+  waitTime: 0.15
   cooldown: 20
