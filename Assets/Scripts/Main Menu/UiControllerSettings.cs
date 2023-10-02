@@ -35,8 +35,8 @@ public class UiControllerSettings : MonoBehaviour
 
     private void Start ()
     {
-        toggleInvertX.SetIsOnWithoutNotify(playerStats.signX == 1);
-        toggleInvertY.SetIsOnWithoutNotify(playerStats.signY == 1);
+        toggleInvertX.SetIsOnWithoutNotify(playerStats.signX != 1);
+        toggleInvertY.SetIsOnWithoutNotify(playerStats.signY != 1);
     }
 
     private void OnDestroy ()
