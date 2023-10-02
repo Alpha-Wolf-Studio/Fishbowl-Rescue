@@ -15925,10 +15925,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2008840985, guid: 15c782f9b6bb1c0459712b7cde7d875e, type: 3}
-      propertyPath: m_AspectRatio
-      value: 1.7760253
-      objectReference: {fileID: 0}
     - target: {fileID: 3655709266015407821, guid: 15c782f9b6bb1c0459712b7cde7d875e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -15979,10 +15975,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6111867884882442411, guid: 15c782f9b6bb1c0459712b7cde7d875e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6111867885242660922, guid: 15c782f9b6bb1c0459712b7cde7d875e, type: 3}
-      propertyPath: m_Alpha
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6111867885270202863, guid: 15c782f9b6bb1c0459712b7cde7d875e, type: 3}
