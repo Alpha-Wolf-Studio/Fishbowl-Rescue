@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1738074489763077844}
   - component: {fileID: 1639443213298201208}
   - component: {fileID: 2273593837484811863}
+  - component: {fileID: 2913080788545819061}
   m_Layer: 0
   m_Name: Water Tap
   m_TagString: Untagged
@@ -60,6 +61,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 2.3, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2913080788545819061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738074489763077842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bc3fc2b2169416d83f199f61be49b3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outlineConfig: {fileID: 11400000, guid: 728a267c3c3d11a4788a92c6eb2d36ba, type: 2}
 --- !u!1001 &5586464136007111033
 PrefabInstance:
   m_ObjectHideFlags: 0

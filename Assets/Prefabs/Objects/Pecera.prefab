@@ -88,12 +88,20 @@ PrefabInstance:
       value: BM_Pecera
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 62e4b7e3c4c28e1428b8ef2610117464, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 62e4b7e3c4c28e1428b8ef2610117464, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6786898933318854648, guid: 62e4b7e3c4c28e1428b8ef2610117464, type: 3}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7242285327842186523, guid: 62e4b7e3c4c28e1428b8ef2610117464, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7242285327842186523, guid: 62e4b7e3c4c28e1428b8ef2610117464, type: 3}
       propertyPath: m_StaticEditorFlags

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7413533866053063214}
   - component: {fileID: 180875365829853267}
   - component: {fileID: 1397454299}
+  - component: {fileID: 2287936266824120868}
   m_Layer: 8
   m_Name: Shark
   m_TagString: Untagged
@@ -136,6 +137,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.3, y: 5, z: 6.7}
   m_Center: {x: 0, y: 0, z: -0.5}
+--- !u!114 &2287936266824120868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7413533866053063201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bc3fc2b2169416d83f199f61be49b3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outlineConfig: {fileID: 11400000, guid: d7ef326ea03ee03468c267e2fc6b0ca8, type: 2}
 --- !u!1001 &2621871331204309705
 PrefabInstance:
   m_ObjectHideFlags: 0

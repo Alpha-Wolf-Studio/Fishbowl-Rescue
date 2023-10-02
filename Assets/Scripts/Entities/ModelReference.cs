@@ -16,11 +16,24 @@ public class ModelReference : MonoBehaviour
     public void Awake()
     {
         SkinnedMeshRenderer[] meshes = GetComponentsInChildren<SkinnedMeshRenderer>();
-        foreach (SkinnedMeshRenderer mesh in meshes)
+        if (meshes.Length > 0)
         {
-            Outline newOutLine = mesh.gameObject.AddComponent<Outline>();
-            newOutLine.OutlineMode = outlineMode;
-            outlinedMeshes.Add(newOutLine);
+            foreach (SkinnedMeshRenderer mesh in meshes)
+            {
+                Outline newOutLine = mesh.gameObject.AddComponent<Outline>();
+                newOutLine.OutlineMode = outlineMode;
+                outlinedMeshes.Add(newOutLine);
+            }
+        }
+        else
+        {
+            MeshRenderer[] meshRenderers = GetComponentsInChildren<MeshRenderer>();
+            foreach (MeshRenderer mesh in meshRenderers)
+            {
+                Outline newOutLine = mesh.gameObject.AddComponent<Outline>();
+                newOutLine.OutlineMode = outlineMode;
+                outlinedMeshes.Add(newOutLine);
+            }
         }
 
         DeactivateOutline();

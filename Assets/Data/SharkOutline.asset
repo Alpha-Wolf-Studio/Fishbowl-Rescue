@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ebbb505b9e940f49d8a463038e2f444, type: 3}
-  m_Name: FishOutline
+  m_Name: SharkOutline
   m_EditorClassIdentifier: 
   outlineMode: 3
-  normalColor: {r: 1, g: 0.70298356, b: 0, a: 1}
-  outlineDefaultWidth: 2.37
-  selectedColor: {r: 0.1695311, g: 1, b: 0, a: 1}
+  normalColor: {r: 1, g: 0, b: 0, a: 1}
+  outlineDefaultWidth: 5
+  selectedColor: {r: 0, g: 1, b: 0.07554293, a: 1}
   outlineSelectedWidth: 10
